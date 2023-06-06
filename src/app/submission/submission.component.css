@@ -1,0 +1,76 @@
+.pcenter{
+	text-align: center;
+}
+.message_dinfo {
+	margin-top: 40px;
+	border: 1px solid #eee;
+	padding: 25px 6%;
+	margin-bottom: 0 !important;
+	text-align: left;
+	font-size: 11px;
+	color: #828282;
+	background: #fcfcfc;
+}
+
+span {
+	color: black;
+}
+.card-body {
+	padding: 1.5rem;
+  }
+.btn-border{
+	background-color: transparent;
+	border: 2px solid #3E54AC;
+	border-radius: 4px;
+}
+
+.btn-border:hover {
+	background-color: #3E54AC;
+	border-color: #3E54AC;
+	color: #fff;
+  }
+
+.btn{
+	width: auto;
+	margin-right: 6px;
+}
+
+.btn-primary {
+	background-color: #3E54AC;
+	border-color: #3E54AC;
+	color: #fff;
+  }
+
+
+.btn-primary:hover {
+	background-color: transparent;
+	border-color: 2px solid #3E54AC;
+	color: #3E54AC;
+  }
+
+.center{
+	text-align: center;
+	display: block;
+    margin: 0 auto;
+}
+	
+.btn:hover {
+		cursor: pointer;
+}
+
+.white-txt {
+	color: #fff !important;
+}
+
+.clientheading{
+    color:#2a9d8f;
+}
+
+.mad-page-title{
+    text-align: center;
+	 padding-top: 2rem;
+}
+
+.spacer{
+margin-top: 4rem;;
+}

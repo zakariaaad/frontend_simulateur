@@ -1,0 +1,64 @@
+
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Hero Start -->
+<section class="bg-home bg-circle-gradiant d-flex align-items-center">
+  <div class="bg-overlay bg-overlay-white"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-8">
+        <div class="card login-page bg-white shadow rounded border-0">
+          <div class="card-body">
+            <h4 class="card-title text-center">Login</h4>
+            <form class="login-form mt-4" #f="ngForm" (ngSubmit)="signIn(f.value)">
+
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="mb-3">
+                    <label for="inputEmail" class="sr-only">Email</label>
+                    <div class="form-icon position-relative">
+                      <i data-feather="user" class="fea icon-sm icons"></i>
+                      <input type="email" id="inputEmail" name="email" ngModel class="form-control"
+                        placeholder="Adresse email" required autofocus>
+
+                    </div>
+                  </div>
+                </div><!--end col-->
+
+                <div class="col-lg-12">
+                  <div class="mb-3">
+                    <label for="inputPassword" class="sr-only">Mot de passe</label>
+                    <div class="form-icon position-relative">
+                      <i data-feather="key" class="fea icon-sm icons"></i>
+                      <input type="password" id="inputPassword" name="password" ngModel class="form-control"
+                        placeholder="Mot de passe" required>
+                    </div>
+                  </div>
+                </div><!--end col-->
+
+
+                <div class="col-lg-12 mb-0">
+                  <div class="d-grid">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+
+                  </div>
+                </div><!--end col-->
+
+                <div class="col-12 text-center">
+                  <p class="mb-0 mt-3"><small class="text-dark me-2">Vous n'avez pas un compte ?</small> <a
+                      href="#" class="text-dark fw-bold">Inscription</a></p>
+                </div><!--end col-->
+              </div><!--end row-->
+            </form>
+          </div>
+        </div><!---->
+      </div><!--end col-->
+    </div><!--end row-->
+  </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+<!-- Icons -->
+<script src="../assets/js/feather.min.js"></script>
+<!-- Main Js -->
+<script src="../assets/js/plugins.init.js"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+<script src="../assets/js/app.js"></script>

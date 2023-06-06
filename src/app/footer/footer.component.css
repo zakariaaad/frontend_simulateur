@@ -1,0 +1,29 @@
+.mad-widget{
+    text-align: center !important;
+    margin-top: 2rem;
+}
+
+
+
+.mdfooter{
+    background: #655DBB;
+    position: relative;
+    color: white;
+}
+
+.mad-footer-bottom{
+    padding-top: 2rem;
+}
+
+.align-center {
+    text-align: center;
+}
+.copyrights{
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    margin: 0 auto;
+}
+.imgftr{
+    /* margin-top: 5rem; */
+    padding-left: 7rem; padding-right: 7rem;
+}

@@ -1,0 +1,223 @@
+// import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+// import { FormBuilder, FormGroup } from '@angular/forms';
+
+// @Component({
+//   selector: 'app-formclient',
+//   templateUrl: './formclient.component.html',
+//   styleUrls: ['./formclient.component.css'],
+// })
+// export class FormclientComponent implements OnInit {
+
+//   @Input()
+//   startingForm!: FormGroup;
+//   @Output() subformInitialized: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+//   @Output() changeStep: EventEmitter<boolean> = new EventEmitter<boolean>();
+//   public clientsInfoForm!: FormGroup;
+// constructor(private _fb: FormBuilder) {}
+// ngOnInit() {
+//     if (this.startingForm) {
+//       this.clientsInfoForm = this.startingForm;
+//     } else {
+//       this.clientsInfoForm = this._fb.group({
+//         nomComplet: '',
+//         telephone: '',
+//         numCin: '',
+//         email: '',
+//         age: '',
+//         ville: '',
+//         // ... continue with the other fields
+//       })
+//     }
+// this.subformInitialized.emit(this.clientsInfoForm);
+//   }
+// doChangeStep(direction: 'forward' | 'back') {
+//   if (direction === 'forward') {
+//     this.changeStep.emit(true);
+//   }
+// }
+// }
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { FormBuilder, FormGroup } from '@angular/forms';
+// import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+// import { Observable } from 'rxjs/internal/Observable';
+// type Step = 'Clientsinfo' | 'Simulationinfo';
+
+
+// @Component({
+//   selector: 'app-form-container',
+//   templateUrl: './form-container.component.html',
+//   styleUrls: ['./form-container.component.css']
+// })
+
+
+
+// export class FormContainerComponent implements OnInit {
+  
+//   private currentStepBs: BehaviorSubject<Step> = new BehaviorSubject<Step>('Simulationinfo');
+//   public currentStep$: Observable<Step> = this.currentStepBs.asObservable();
+//   public userForm!: FormGroup;
+// constructor(private _fb: FormBuilder) {}
+// ngOnInit() {
+//     this.userForm = this._fb.group({
+//       Clientsinfo: null,
+//       Simulationinfo: null
+//     });
+//   }
+// subformInitialized(name: string, group: FormGroup) {
+//     this.userForm.setControl(name, group);
+//   }
+// changeStep(currentStep: string, direction: 'forward' | 'back') {
+//     switch(currentStep) {
+//       case 'ClientsinfoStep':
+//         if (direction === 'forward') {
+//           this.currentStepBs.next('Simulationinfo');
+//         }
+//         break;
+//       case 'SimulationinfoStep':
+//         if (direction === 'back') {
+//           this.currentStepBs.next('Clientsinfo');
+//         }
+//         break;
+//     }
+//   }
+// submitForm() {
+//       const formValues = this.userForm.value;
+//       // submit the form with a service
+//   }
+// }
+
+
+  // addHero(hero: Hero): Observable<Hero> {
+  //   return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
+  //     .pipe(
+  //       catchError(this.handleError('addHero', hero))
+  //     );
+  // }
+      // nom_prenom_client: new FormControl('', Validators.required),
+  // get f()
+  // {
+  //     return this.multistep.controls;
+  // }
+
+  // static shouldBeUnique(control: AbstractControl) : ValidationErrors | null{
+  //   if (control.value == '') {
+  //     return {shouldBeUnique: true};
+  //   }else{
+  //     return null;
+  //   }
+  // }
+  
+        <!-- <button class="btn btn-dark" type="reset" *ngIf="step == 2">Annuler</button> -->
+*******************
+       // if (this.multistep.get('infoClients')?.invalid) {
+        //   // this.multistep.setErrors({
+        //   //     invaliddata: true
+        //   //   })
+        // } else {
+        // if (stepclt?.errors ) {
+      //           this.multistep.setErrors({
+      //   invaliddata: true
+      // })
+        // }else if(stepclt?.value != null){
+          // if (stepclt?.value != null) {
+
+HEADER :::
+  /*<header id="topnav" class="defaultscroll sticky">
+    <div class="container">
+        <!-- Logo container-->
+        <a class="logo" routerLink="">
+            <span class="logo-light-mode">
+                <img src="logohere" class="l-dark" height="24" alt="">
+                <img src="images/logo-light.png" class="l-light" height="24" alt="">
+            </span>
+            <img src="images/logo-light.png" height="24" class="logo-dark-mode" alt="">
+        </a>
+
+        <!-- End Logo container-->
+        <div class="menu-extras">
+            <div class="menu-item">
+                <!-- Mobile menu toggle-->
+                <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                    <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
+                <!-- End mobile menu toggle-->
+            </div>
+        </div>
+
+        <!--Login button Start-->
+        <ul class="buy-button list-inline mb-0">
+            <li class="list-inline-item mb-0">
+                <a routerLink="/login">
+                    <div class="login-btn-primary"><span class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="settings" class="fea icon-sm"></i></span></div>
+                    <div class="login-btn-light"><span class="btn btn-icon btn-pills btn-light"><i data-feather="settings" class="fea icon-sm"></i></span></div>
+                </a>
+            </li>
+        </ul>
+        <!--Login button End-->
+
+        <div id="navigation">
+            <!-- Navigation Menu-->   
+            <ul class="navigation-menu nav-light">
+                <li><a routerLink="/" class="sub-menu-item">Accueil</a></li>
+                <li><a routerLink="/apropos" class="sub-menu-item">A propos</a></li>
+                <li class="has-submenu parent-menu-item">
+                  <a href="javascript:void(0)">Gestion Simulations</a><span class="menu-arrow"></span>
+                  <ul class="submenu">
+                      <li><a routerLink="/simulations" class="sub-menu-item">Création simulation</a></li>
+                      <li><a routerLink="/simulations" class="sub-menu-item">Liste des simulations</a></li>
+
+                  </ul>
+                </li>
+                <li><a  class="sub-menu-item">Gestion Clients</a></li>
+
+                <li><a href="" target="_blank" class="sub-menu-item">Admin</a></li>
+            </ul><!--end navigation menu-->
+        </div><!--end navigation-->
+    </div><!--end container-->
+</header>*/
+
+
+
+<!-- <form class="form-signin" #f="ngForm" (ngSubmit)="signIn(f.value)">
+  <h2 class="form-signin-heading">Please sign in</h2>
+  <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username and/or password.</div>
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input type="email" id="inputEmail" name="email" ngModel class="form-control" placeholder="Email address" required
+    autofocus>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" name="password" ngModel class="form-control" placeholder="Password"
+    required>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form> -->
+
+
+
+
+
+
+
+Montant Mensualité calcul:
+
+(Simulation!Q23 = Credit relais cocher)
+(Simulation!B28 =  duree credit)
+(Formules!C17 =  taux d'interet)
+(Simulation!H29 =  Fréquence)
+(Simulation!B25 =  Montant)
+
+formule 1 : PMT(txinteret/100*1.1*dureec/12/frequence, 12/(12/frequence),-montant)
+param1 = rate, param2= Nper, param3 =Pv
+
+=IF(Simulation!Q23="x",
+IF(Simulation!B28>24,"Durée incompatible !",
+PMT(Formules!C17/100*1.1*Simulation!B28/12/Simulation!H29,12/(12/Simulation!H29),-Simulation!B25)),
+IF(Simulation!B28>300,Formules!C21,
+IF(Simulation!A23="Prime unique",
+PMT(Formules!C17/100*1.1/Simulation!H29,(Simulation!B28-Simulation!B29)/(12/Simulation!H29),-(Simulation!B25*(1+(Formules!C17/100*1.1/12))^Simulation!B29)),
+IF(Simulation!A23="Prime mensuelle",IF(Simulation!K23="x",Formules!C20,Formules!C21),
+IF(OR(Simulation!C23="x",AND(Simulation!G22="Multirisque habitation",Simulation!G23="x")),"Périodicité assurance(s) ?",PMT(Formules!C17/100*1.1/Simulation!H29,(Simulation!B28-Simulation!B29)/(12/Simulation!H29),-(Simulation!B25*(1+(Formules!C17/100*1.1/12))^Simulation!B29)))))))
