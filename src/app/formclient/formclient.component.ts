@@ -34,21 +34,21 @@ export class FormclientComponent implements OnInit {
       nom_prenom_client: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
       telephone_client: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
       numero_cin_client: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-      email_client: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      email_client: new FormControl(''),
       age_client: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
       ville_client: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
       profession_client: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-      date_naissance_client: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-      adresse_client: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-      revenu_principale_client: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+      date_naissance_client: new FormControl(''),
+      adresse_client: new FormControl(''),
+      revenu_principale_client: new FormControl(),
     }),
 
     //Crédit detail
     infoSimulations: new FormGroup({
-      type_produit_simulation: new FormControl('',{ nonNullable: true, validators: [Validators.required] }),
+      type_produit_simulation: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
       prix_produit_simulation: new FormControl(),
       duree_simulation: new FormControl(),
-      type_taux_simulation: new FormControl('',{ nonNullable: true, validators: [Validators.required] }),
+      type_taux_simulation: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
       tauxinteret_simulation: new FormControl(),
       montant_remise_simulation: new FormControl(),
       frequence_simulation: new FormControl(),
@@ -71,34 +71,44 @@ export class FormclientComponent implements OnInit {
     //   alert("ttest");
     //   return
     // }
+    // invalid:Boolean= false;
 
     //Ajouer Client Step 1
     if (this.step == 1) {
       if (stepclt?.invalid) {
-        this.multistep.setErrors({
-          invalid :true
+        this.multistep.get('infoClients')?.setErrors({
+          invalid: true
         })
         return
       }
-    this.nomclient = this.multistep.get('infoClients.nom_prenom_client')?.value;
+      else {
+        this.multistep.get('infoClients')?.setErrors({
+          invalid: false
+        })
+        this.nomclient = this.multistep.get('infoClients.nom_prenom_client')?.value;
 
-      await this.httpcrud.addClient(stepclt?.value).subscribe((response) => {
-        this.id_client = response.body.data;
-        // console.log('ook', response.body.data);
-      });
-      this.step = this.step + 1;
-
+        await this.httpcrud.addClient(stepclt?.value).subscribe((response) => {
+          this.id_client = response.body.data;
+          // console.log('ook', response.body.data);
+        });
+        this.step = this.step + 1;
+      }
     }
 
     const txinteret = this.multistep.get('infoSimulations.tauxinteret_simulation')?.value;
     const frequence = this.multistep.get('infoSimulations.frequence_simulation')?.value;
     const duree = this.multistep.get('infoSimulations.duree_simulation')?.value;
     const montantproduit = this.multistep.get('infoSimulations.prix_produit_simulation')?.value;
+    const dr = duree / 12 / frequence;
 
     //Parametre calcul
     const montantcredit = -montantproduit
-    const rate1 = (txinteret / 100) * 1.1 * duree;
+    const rate1 = (txinteret / 100) * 1.1 * dr;
+
+    // console.log("M1",par1);
     const nbrper1 = 12 / (12 / frequence);
+    // console.log("M2",mntpv1);
+    // console.log("M3",mntfin);
 
     //Calcul mensualite
     const mensualite = CalculatePMT(rate1, nbrper1, montantcredit);
@@ -127,9 +137,9 @@ export class FormclientComponent implements OnInit {
     this.mntcredit = montantproduit;
     this.duree = duree;
     this.frequence = frequence;
-    this.typetaux = datasimulation.type_taux_simulation;
-    this.fraisdossier = datasimulation.frais_dossier_simulation;
-    this.Assurance = datasimulation.assurance_deces_simulation;
+    // this.typetaux = datasimulation.type_taux_simulation;
+    // this.fraisdossier = datasimulation.frais_dossier_simulation;
+    // this.Assurance = datasimulation.assurance_deces_simulation;
 
     //Ajouter Simulation step 2
     if (this.step == 2) {
@@ -138,25 +148,21 @@ export class FormclientComponent implements OnInit {
       // console.log("data", datasimulation);
 
       if (stepsimulation?.invalid) {
-        this.multistep.setErrors({
-          invalid :true
+        this.multistep.get('infoSimulations')?.setErrors({
+          invalid: true
         })
         return
-      }else{
-      console.log('data', datasimulation);
-      await this.httpcrud.addSimulation(datasimulation).subscribe((response) => {
-        console.log('ook', response.body.data);
+      } else {
+        console.log('data', datasimulation);
+        await this.httpcrud.addSimulation(datasimulation).subscribe((response) => {
+          console.log('ook', response.body.data);
 
-      });
-      this.step = this.step + 1;
-    }
+        });
+        this.step = this.step + 1;
+      }
     }
 
 
-    // Fin Validate Simulation
-    if (this.step == 4) {
-      this.router.navigate(['/validation'])
-    }
   }
 
   previous() {
@@ -164,23 +170,23 @@ export class FormclientComponent implements OnInit {
   }
 
 
-} 
+}
 
 //Calcul de Mensualité crédit
- /*
-     * rate   - interest rate per month
-     * nbrper   - number of periods (months)
-     * montantpv   - present value
-     * type - when the payments are due:
-     *        0: end of the period, e.g. end of month (default)
-     *        1: beginning of period
-  */
+/*
+    * rate   - interest rate per month
+    * nbrper   - number of periods (months)
+    * montantpv   - present value
+    * type - when the payments are due:
+    *        0: end of the period, e.g. end of month (default)
+    *        1: beginning of period
+ */
 function CalculatePMT(rate: any, nbrper: number, montantpv: number) {
-  
-  var type, pmt, pvif;
-  type || (type = 0);
 
-  if (rate === 0)  return -(montantpv) / nbrper;
+  var pmt, pvif;
+  // type || (type = 0);
+
+  if (rate === 0) return -(montantpv) / nbrper;
 
   pvif = Math.pow(1 + rate, nbrper);
   // pmt = (-rate * (montantpv * pvif)) / (pvif - 1);
@@ -188,8 +194,8 @@ function CalculatePMT(rate: any, nbrper: number, montantpv: number) {
 
 
   // if (type === 1)
-    pmt /= (1 + rate);
-    // pmt /= 1 + rate; 
+  pmt /= (1 + rate);
+  // pmt /= 1 + rate; 
 
   return pmt;
 }

@@ -220,4 +220,14 @@ IF(Simulation!B28>300,Formules!C21,
 IF(Simulation!A23="Prime unique",
 PMT(Formules!C17/100*1.1/Simulation!H29,(Simulation!B28-Simulation!B29)/(12/Simulation!H29),-(Simulation!B25*(1+(Formules!C17/100*1.1/12))^Simulation!B29)),
 IF(Simulation!A23="Prime mensuelle",IF(Simulation!K23="x",Formules!C20,Formules!C21),
-IF(OR(Simulation!C23="x",AND(Simulation!G22="Multirisque habitation",Simulation!G23="x")),"Périodicité assurance(s) ?",PMT(Formules!C17/100*1.1/Simulation!H29,(Simulation!B28-Simulation!B29)/(12/Simulation!H29),-(Simulation!B25*(1+(Formules!C17/100*1.1/12))^Simulation!B29)))))))
+IF(OR(Simulation!C23="x",AND(Simulation!G22="Multirisque habitation",Simulation!G23="x")),
+"Périodicité assurance(s) ?",
+
+PMT(Formules!C17/100*1.1/Simulation!H29,(Simulation!B28-Simulation!B29)/(12/Simulation!H29),-(Simulation!B25*(1+(Formules!C17/100*1.1/12))^Simulation!B29)))))))
+
+
+Montant à débloquer
+=IF(Q28="% assurance ?","% assur. Décès ?",
+IF(B25=0,"Montant ?",IF(OR(Q28="Durée ?",Q29="Durée ?"),"Durée ?",IF(OR(Q28="Périodicité ?",Q29="Périodicité ?"),"Périodicité ?",
+IF(J23<>"x",B25-Q27,B25-Q25-Q27)))))
+

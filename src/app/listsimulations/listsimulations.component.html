@@ -31,16 +31,15 @@
                         <tbody>
                             <!-- Start -->
                             <tr *ngFor="let simulation of simulations">
-                                <th class="p-3"><a href="#" class="text-primary">{{simulation.id_simulation}}</a></th>
+                                <th class="p-3"><a href="#" class="text-primary">#{{simulation.id_simulation}}</a></th>
                                 <td class="p-3">
                                     <a href="#" class="text-primary">
                                         <div class="d-flex align-items-center">
-                                            <!-- <img src="assets/images/client/01.jpg" class="avatar avatar-ex-small rounded-circle shadow" alt=""> -->
                                             <span class="ms-2">{{simulation.id_client}}</span>
                                         </div>
                                     </a>
                                 </td>
-                                <td class="text-center p-3">{{simulation.date_simulation}}</td>
+                                <td class="text-center p-3">{{simulation.date_simulation | date: 'yyyy-MM-dd'}}</td>
                                 <td class="text-center p-3">{{simulation.prix_produit_simulation}} DH</td>
                                 <td class="text-center p-3">{{simulation.type_produit_simulation}}</td>
                                 <td class="text-center p-3">{{simulation.duree_simulation}} mois</td>

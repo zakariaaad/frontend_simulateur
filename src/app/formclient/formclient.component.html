@@ -1,12 +1,14 @@
 <div class="wrapper">
   <h1 class="heading center">Simulateur de crédit</h1>
   <form (ngSubmit)="submit()" method="post" [formGroup]="multistep">
-
     <div class="container">
-      <div class="alert alert-danger" *ngIf="multistep.errors">
-        <strong>Merci de remplire tous les champs qui sont obligatoire indiquer avec *</strong>
-      </div>
+      <!-- <div class="alert alert-danger" *ngIf="multistep.errors"> -->
+
       <section id="clients" *ngIf="step == 1" formGroupName="infoClients">
+        <div class="alert alert-danger" *ngIf="multistep.get('infoClients')?.errors">
+          <strong>Merci de remplire tous les champs qui sont obligatoire indiquer avec
+            *</strong>
+        </div>
         <div class="spacer"></div>
         <h5>Infos clients :</h5>
         <div class="spacer"></div>
@@ -15,13 +17,17 @@
           <div class="col-lg-6">
             <label for="nom_prenom_client">Nom complet</label>
             <span class="text-danger"> *</span>
-            <input type="text" class="form-control"
-              [ngClass]="{ 'is-invalid': multistep.get('infoClients.nom_prenom_client')?.invalid }"
-              id="nom_prenom_client" formControlName="nom_prenom_client" placeholder="Nom complet" />
-            <div
-              *ngIf="multistep.get('infoClients.nom_prenom_client')?.touched && multistep.get('infoClients.nom_prenom_client')?.invalid"
-              class="alert alert-danger">
-              <div *ngIf="multistep.get('infoClients.nom_prenom_client')?.invalid">Le nom est obligatoire</div>
+            <input type="text" class="form-control" [ngClass]="{
+                'is-invalid': multistep.get('infoClients.nom_prenom_client')
+                  ?.invalid
+              }" id="nom_prenom_client" formControlName="nom_prenom_client" placeholder="Nom complet" />
+            <div *ngIf="
+                multistep.get('infoClients.nom_prenom_client')?.touched &&
+                multistep.get('infoClients.nom_prenom_client')?.invalid
+              " class="alert alert-danger">
+              <div *ngIf="multistep.get('infoClients.nom_prenom_client')?.invalid">
+                Le nom est obligatoire
+              </div>
             </div>
           </div>
           <div class="col-lg-6">
@@ -39,9 +45,10 @@
             <span class="text-danger"> *</span>
             <input type="text" class="form-control" id="numero_cin_client" formControlName="numero_cin_client"
               placeholder="CIN" />
-            <div
-              *ngIf="multistep.get('infoClients.numero_cin_client')?.touched && multistep.get('infoClients.numero_cin_client')?.invalid"
-              class="alert alert-danger">
+            <div *ngIf="
+                multistep.get('infoClients.numero_cin_client')?.touched &&
+                multistep.get('infoClients.numero_cin_client')?.invalid
+              " class="alert alert-danger">
               Le Numéro CIN est obligatoire
             </div>
           </div>
@@ -61,8 +68,9 @@
           </div>
           <div class="col-lg-6">
             <label for="ville_client">Ville</label>
-
+            <span class="text-danger"> *</span>
             <select class="form-select" formControlName="ville_client" aria-label="Ville" id="ville_client">
+              <option value="" selected>Choisire...</option>
               <option value="Kenitra">Kenitra</option>
               <option value="Rabat">Rabat</option>
               <option value="Casablanca">Casablanca</option>
@@ -76,6 +84,7 @@
             <span class="text-danger"> *</span>
             <select class="form-select" formControlName="profession_client" aria-label="Profession"
               id="profession_client">
+              <option value="" selected>Choisire...</option>
               <option value="Fonctionnaire">Fonctionnaire</option>
               <option value="Salarié">Salarié</option>
               <option value="Profession libérale">Profession libérale</option>
@@ -84,7 +93,6 @@
           </div>
           <div class="col-lg-6">
             <label for="revenu_principale_client">Salaire</label>
-            <span class="text-danger"> *</span>
             <input type="number" class="form-control" id="revenu_principale_client"
               formControlName="revenu_principale_client" placeholder="Salaire" />
           </div>
@@ -97,7 +105,6 @@
 
             <input type="date" id="date_naissance_client" class="form-control" formControlName="date_naissance_client"
               placeholder="" />
-
           </div>
           <div class="col-lg-6">
             <label for="adresse_client">Adresse</label>
@@ -109,6 +116,10 @@
       </section>
 
       <section id="simulations" *ngIf="step == 2" formGroupName="infoSimulations">
+        <div class="alert alert-danger" *ngIf="multistep.get('infoSimulations')?.errors">
+          <strong>Merci de remplire tous les champs qui sont obligatoire indiquer avec
+            *</strong>
+        </div>
         <div class="spacer"></div>
         <h5>Infos crédit</h5>
         <div class="spacer"></div>
@@ -117,13 +128,25 @@
           <div class="col-lg-6">
             <label for="type_produit_simulation">Type produit</label>
             <input type="text" class="form-control" placeholder="Type produit" id="type_produit_simulation"
-              formControlName="type_produit_simulation" [ngClass]="{ 'is-invalid': multistep.get('infoSimulations.type_produit_simulation')?.invalid }"/>
-              <div
-              *ngIf="multistep.get('infoSimulations.type_produit_simulation')?.touched && multistep.get('infoSimulations.type_produit_simulation')?.invalid"
-              class="alert alert-danger">
-              <div *ngIf="multistep.get('infoSimulations.type_produit_simulation')?.invalid">Le nom est obligatoire</div>
+              formControlName="type_produit_simulation" [ngClass]="{
+                'is-invalid': multistep.get(
+                  'infoSimulations.type_produit_simulation'
+                )?.invalid
+              }" />
+            <div *ngIf="
+                multistep.get('infoSimulations.type_produit_simulation')
+                  ?.touched &&
+                multistep.get('infoSimulations.type_produit_simulation')
+                  ?.invalid
+              " class="alert alert-danger">
+              <div *ngIf="
+                  multistep.get('infoSimulations.type_produit_simulation')
+                    ?.invalid
+                ">
+                Type est obligatoire
+              </div>
             </div>
-            </div>
+          </div>
           <div class="col-lg-6">
             <label for="prix_produit_simulation">Prix produit</label>
 
@@ -159,7 +182,6 @@
             <label for="montant_remise_simulation">Montant de remise</label>
             <input type="number" class="form-control" placeholder="Montant de remise" id="montant_remise_simulation"
               formControlName="montant_remise_simulation" />
-
           </div>
         </div>
         <div class="spacer"></div>
@@ -175,7 +197,6 @@
 
             <input type="number" class="form-control" placeholder="Assurance Dèces" id="assurance_deces_simulation"
               formControlName="assurance_deces_simulation" />
-
           </div>
         </div>
         <div class="spacer"></div>
@@ -195,7 +216,6 @@
 
             <input type="number" class="form-control" placeholder="Avance sur crédit" id="avance_credit_simulation"
               formControlName="avance_credit_simulation" />
-
           </div>
         </div>
         <div class="spacer"></div>
@@ -212,7 +232,6 @@
 
             <input type="number" class="form-control" placeholder="Frais dossier" id="frais_dossier_simulation"
               formControlName="frais_dossier_simulation" />
-
           </div>
         </div>
       </section>
@@ -222,8 +241,10 @@
           <div class="row">
             <div class="col-xl-12">
               <h2 class="mad-page-title">RESULTAT SIMULATION DE CREDIT</h2>
-              <br>
-              <h5 class="clientheading">Nom du client : {{this.nomclient}}</h5>
+              <br />
+              <h5 class="clientheading">
+                Nom du client : {{ this.nomclient }}
+              </h5>
               <table class="sim_cobtainer">
                 <tr>
                   <td>
@@ -231,79 +252,71 @@
                     <span class="detail_sim_labels">MONTANT DU CRÉDIT</span>
                     <span class="detail_sim_labels"></span>
                     <span class="detail_sim_num" id="montantgener">
-                      {{this.mntcredit}}</span>DH
+                      {{ this.mntcredit }}</span>DH
                   </td>
                   <td>
                     <span><img src="../assets/images/iconsim/interest.svg" alt="" width="43px" /></span>
-                    <span class="detail_sim_lable_container"><span class="detail_sim_labels">TAUX
-                        (HT)</span>
-                      <span class="detail_sim_num" id="tauxinteret">
-                      </span>{{this.interet}}%</span>
+                    <span class="detail_sim_lable_container"><span class="detail_sim_labels">TAUX (HT)</span>
+                      <span class="detail_sim_num" id="tauxinteret"> </span>{{ this.interet }}%</span>
                   </td>
                   <td>
                     <span><img src="../assets/images/iconsim/duree.svg" width="43px" /></span>
                     <span class="detail_sim_lable_container">
                       <span class="detail_sim_labels">DURÉE DU CRÉDIT</span><br />
-                      <span id="duree" class="detail_sim_num">
-                      </span>{{this.duree}} MOIS</span>
+                      <span id="duree" class="detail_sim_num"> </span>{{ this.duree }} MOIS</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <span><img src="../assets/images/iconsim/franchise.svg" width="43px" /></span><span
                       class="detail_sim_lable_container"><span class="detail_sim_labels">Franchise
-                        Différé</span><br /><span class="detail_sim_num">
-                        0
-                      </span><span> Mois</span></span>
+                        Différé</span><br /><span class="detail_sim_num"> 0 </span><span> Mois</span></span>
                   </td>
                   <td>
                     <span><img src="../assets/images/iconsim/duree.svg" width="43px" /></span><span
                       class="detail_sim_lable_container"><span class="detail_sim_labels">Fréquence de
-                        remboursement</span><br /><span class="detail_sim_num" id="frequence">
-                          </span>{{this.frequence}}</span>
+                        remboursement</span><br /><span class="detail_sim_num" id="frequence"> </span>{{ this.frequence
+                      }}</span>
                   </td>
                   <td>
                     <span><img src="../assets/images/iconsim/type-interest.svg" alt="" width="43px" /></span><span
-                      class="detail_sim_lable_container"><span class="detail_sim_labels">Type de
-                        taux</span><br /><span id="typetx" class="detail_sim_num">
-                          {{this.frequence}}
-                      </span></span>
+                      class="detail_sim_lable_container"><span class="detail_sim_labels">Type de taux</span><br /><span
+                        id="typetx" class="detail_sim_num"> </span></span>
                   </td>
                 </tr>
                 <tr>
                   <td colspan="2" class="ligh_grey_bg">
                     <span><img src="" width="43px" /></span><span class="detail_sim_lable_container"><span
                         class="detail_sim_labels">Coût total du crédit</span><br /><span class="cout_txt">
-                          {{this.interet}}
                         <span>Dhs(Intérêts)</span>
                       </span></span><span class="detail_sim_lable_container mleft"><span
                         class="detail_sim_labels"></span><br /><span class="cout_txt">
-                          {{this.Assurance}}
                         <span>Dhs(Assurance)</span>
                       </span></span><span class="detail_sim_lable_container mleft"><span
                         class="detail_sim_labels"></span><br /><span class="cout_txt">
-                          {{this.fraisdossier}}
                         <span>Dhs(Frais de dossier)</span>
                       </span></span>
                   </td>
                   <td class="orange_bg">
                     <span><img src="../assets/images/iconsim/mensualite.svg" width="43px" /></span><span
                       class="detail_sim_lable_container"><span class="detail_sim_labels white-txt">MENSUALITÉ
-                        TTC</span><br /><span class="detail_sim_num white-txt" id="mensualite" >
-                          {{this.mensualitee}}</span></span> 
+                        TTC</span><br /><span class="detail_sim_num white-txt" id="mensualite">
+                        {{ this.mensualitee }}</span></span>
                   </td>
                 </tr>
               </table>
 
               <!--================ Vertical Table ================-->
-              <br>
-              <br>
+              <br />
+              <br />
               <div class="mad-table-wrap style-2">
                 <table class="mad-table">
                   <thead>
                     <tr>
-                      <th colspan="3" style="text-align: center;">Montant sollicité </th>
-                      <th rowspan="2">Frais de dossier TTC </th>
+                      <th colspan="3" style="text-align: center">
+                        Montant sollicité
+                      </th>
+                      <th rowspan="2">Frais de dossier TTC</th>
                       <th rowspan="2">Montant à débloquer</th>
                     </tr>
                     <tr>
@@ -314,26 +327,29 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td data-cell-title="Décès" style="color: #121212;border: 1px solid;">Prime mensuelle</td>
-                      <td data-cell-title="Incendie" style="color: #121212;border: 1px solid;">
+                      <td data-cell-title="Décès" style="color: #121212; border: 1px solid">
+                        Prime mensuelle
+                      </td>
+                      <td data-cell-title="Incendie" style="color: #121212; border: 1px solid">
                         1,138.00
                       </td>
-                      <td data-cell-title="Total" style="color: #121212;border: 1px solid;">1,138.00</td>
-                      <td data-cell-title="Frais de dossier TTC " style="color: #121212;border: 1px solid;">
-                        2,310.00</td>
-                      <td data-cell-title="Montant à débloquer" style="color: #121212;border: 1px solid;">
-                        </td>
+                      <td data-cell-title="Total" style="color: #121212; border: 1px solid">
+                        1,138.00
+                      </td>
+                      <td data-cell-title="Frais de dossier TTC " style="color: #121212; border: 1px solid">
+                        2,310.00
+                      </td>
+                      <td data-cell-title="Montant à débloquer" style="color: #121212; border: 1px solid"></td>
                     </tr>
-
                   </tbody>
-
                 </table>
               </div>
               <!--================ End of Vertical Table ================-->
-              <br>
-              <p class="message_dinfo"><span>NB : Il s'agit d'une simple simulation à caractère non contractuelle</span>
+              <br />
+              <p class="message_dinfo">
+                <span>NB : Il s'agit d'une simple simulation à caractère non
+                  contractuelle</span>
               </p>
-
             </div>
           </div>
         </div>
@@ -341,14 +357,18 @@
       <div class="spacer"></div>
       <div class="row actions">
         <a class="btn btn-primary" *ngIf="step != 1" (click)="previous()">Précedent</a>
-        <button class="btn btn-primary" type="submit" *ngIf="step != 3">Suivant</button>
-        <button class="btn btn-primary" type="submit" *ngIf="step == 3">Valider</button>
+        <button class="btn btn-primary" type="submit" *ngIf="step != 3">
+          Suivant
+        </button>
+        <!-- <button class="btn btn-primary" type="submit" *ngIf="step == 3">
+          Valider
+        </button> -->
+        <a class="btn btn-primary" *ngIf="step == 3" routerLink="/validation">Valider</a>
 
         <!-- <br><pre>
           {{multistep.value | json}}</pre> -->
       </div>
       <div class="spacermt"></div>
-
     </div>
   </form>
 </div>

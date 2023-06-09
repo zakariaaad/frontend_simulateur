@@ -1,0 +1,9 @@
+    // if (this.step == 3) {
+    //   this.step = this.step + 1;
+    // }
+
+
+    // Fin Validate Simulation
+    // if (this.step == 4) {
+    //   this.router.navigate(['/validation'])
+    // }
