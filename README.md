@@ -1,6 +1,12 @@
 # FrontendSimulateur
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+This project is an application for creating & managing loan simulation
+it's containing multiples fonctionnalities (Gestion de simulation, gestion des clients, authentification
+Portail web, Export PDF, Calculs automatique)
+it's developped with an architecture Backend & Frontend The stack & Technologies is :
+Angular, NodeJS, Express JS, JWT, JsPdf, Mysql, Bootstrap, Unicons, Git
+
+ [Angular CLI] version 15.2.0.
 
 ## Development server
 
