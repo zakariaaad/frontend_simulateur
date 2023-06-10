@@ -18,6 +18,7 @@ import { AuthserviceService } from './service/authservice.service';
 import { NoPermissionComponent } from './no-permission/no-permission.component';
 import { ListsimulationsComponent } from './listsimulations/listsimulations.component';
 import { HomeComponent } from './home/home.component';
+import { DetailsimComponent } from './detailsim/detailsim.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     NoPermissionComponent,
     ListsimulationsComponent,
-    HomeComponent
+    HomeComponent,
+    DetailsimComponent
   ],
   imports: [
     BrowserModule,

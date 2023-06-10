@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -7,6 +7,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CrudserviceService } from '../service/crudservice.service';
+import { pmt } from 'financial'
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-formclient',
@@ -23,9 +26,12 @@ export class FormclientComponent implements OnInit {
   mntcredit!: number;
   duree!: number;
   frequence!: number;
+  mntndebloquer!: number;
   typetaux!: any;
   nomclient!: any;
-
+  prime!: any;
+  typeprod! : any;
+  mntavance! : number;
   step: any = 1;
   invaliddata: boolean = false;
   multistep = new FormGroup({
@@ -54,12 +60,13 @@ export class FormclientComponent implements OnInit {
       frequence_simulation: new FormControl(),
       assurance_deces_simulation: new FormControl(),
       assurances_simulation: new FormControl(''),
+      caractéristiques_simulation: new FormControl(''),
       avance_credit_simulation: new FormControl(),
       echeance_mensuelle_simulation: new FormControl(),
       frais_dossier_simulation: new FormControl(),
     }),
   });
-
+  @ViewChild('resultat') resultat!: ElementRef;
   constructor(private router: Router, private httpcrud: CrudserviceService) { }
   ngOnInit(): void { }
 
@@ -67,11 +74,6 @@ export class FormclientComponent implements OnInit {
 
     //Etape Client
     const stepclt = this.multistep.get('infoClients');
-    // if (stepclt?.invalid) {
-    //   alert("ttest");
-    //   return
-    // }
-    // invalid:Boolean= false;
 
     //Ajouer Client Step 1
     if (this.step == 1) {
@@ -99,21 +101,36 @@ export class FormclientComponent implements OnInit {
     const frequence = this.multistep.get('infoSimulations.frequence_simulation')?.value;
     const duree = this.multistep.get('infoSimulations.duree_simulation')?.value;
     const montantproduit = this.multistep.get('infoSimulations.prix_produit_simulation')?.value;
-    const dr = duree / 12 / frequence;
-
+    const fraisdossier2 = this.multistep.get('infoSimulations.frais_dossier_simulation')?.value;
+    // const dr = duree / 12 ;
+    this.prime = this.multistep.get('infoSimulations.assurances_simulation')?.value;
+    this.typeprod = this.multistep.get('infoSimulations.type_produit_simulation')?.value;
+    this.mntavance = this.multistep.get('infoSimulations.avance_credit_simulation')?.value;
+    this.mntndebloquer = montantproduit - fraisdossier2;
     //Parametre calcul
     const montantcredit = -montantproduit
-    const rate1 = (txinteret / 100) * 1.1 * dr;
+    const r1 = (txinteret / 100) * 1;
+    console.log("r1",r1);
 
-    // console.log("M1",par1);
-    const nbrper1 = 12 / (12 / frequence);
-    // console.log("M2",mntpv1);
-    // console.log("M3",mntfin);
+    // const r2 = 1 * duree / 12 / frequence;
 
-    //Calcul mensualite
-    const mensualite = CalculatePMT(rate1, nbrper1, montantcredit);
-    this.mensualitee = mensualite;
-    console.log(mensualite);
+    const rate = r1 / frequence;
+    // const nbrper1 = 12 / (12 / frequence);
+
+
+    //Calcul de Mensualité crédit
+    /* Function PMT
+        * rate   - interest rate per month
+        * nbrper   - number of periods (months)
+        * montantpv   - present value
+        * type - when the payments are due:
+        *        0: end of the period, e.g. end of month (default)
+        *        1: beginning of period
+    */
+    const mensualite = pmt(rate, duree, montantcredit);
+ 
+    this.mensualitee = Math.round(mensualite*100)/100;
+    console.log(this.mensualitee);
 
     // Etape formulaire
     const stepsimulation = this.multistep.get('infoSimulations');
@@ -127,6 +144,8 @@ export class FormclientComponent implements OnInit {
       montant_remise_simulation: this.multistep.get('infoSimulations.montant_remise_simulation')?.value,
       frequence_simulation: this.multistep.get('infoSimulations.frequence_simulation')?.value,
       assurance_deces_simulation: this.multistep.get('infoSimulations.assurance_deces_simulation')?.value,
+      assurances_simulation: this.multistep.get('infoSimulations.assurances_simulation')?.value,
+      caractéristiques_simulation: this.multistep.get('infoSimulations.caractéristiques_simulation')?.value,
       avance_credit_simulation: this.multistep.get('infoSimulations.avance_credit_simulation')?.value,
       echeance_mensuelle_simulation: this.multistep.get('infoSimulations.echeance_mensuelle_simulation')?.value,
       frais_dossier_simulation: this.multistep.get('infoSimulations.frais_dossier_simulation')?.value,
@@ -137,15 +156,12 @@ export class FormclientComponent implements OnInit {
     this.mntcredit = montantproduit;
     this.duree = duree;
     this.frequence = frequence;
-    // this.typetaux = datasimulation.type_taux_simulation;
-    // this.fraisdossier = datasimulation.frais_dossier_simulation;
-    // this.Assurance = datasimulation.assurance_deces_simulation;
+    this.typetaux = datasimulation.type_taux_simulation;
+    this.fraisdossier = datasimulation.frais_dossier_simulation;
+
 
     //Ajouter Simulation step 2
     if (this.step == 2) {
-      // console.log("feffe");
-      // console.log("DDZ", stepsimulation);
-      // console.log("data", datasimulation);
 
       if (stepsimulation?.invalid) {
         this.multistep.get('infoSimulations')?.setErrors({
@@ -154,6 +170,7 @@ export class FormclientComponent implements OnInit {
         return
       } else {
         console.log('data', datasimulation);
+        // return false
         await this.httpcrud.addSimulation(datasimulation).subscribe((response) => {
           console.log('ook', response.body.data);
 
@@ -169,34 +186,20 @@ export class FormclientComponent implements OnInit {
     this.step = this.step - 1;
   }
 
-
+  public openPDF(): void {
+    let DATA: any = document.getElementById('resultat');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('resultatcredit.pdf');
+    });
+  }
 }
 
-//Calcul de Mensualité crédit
-/*
-    * rate   - interest rate per month
-    * nbrper   - number of periods (months)
-    * montantpv   - present value
-    * type - when the payments are due:
-    *        0: end of the period, e.g. end of month (default)
-    *        1: beginning of period
- */
-function CalculatePMT(rate: any, nbrper: number, montantpv: number) {
-
-  var pmt, pvif;
-  // type || (type = 0);
-
-  if (rate === 0) return -(montantpv) / nbrper;
-
-  pvif = Math.pow(1 + rate, nbrper);
-  // pmt = (-rate * (montantpv * pvif)) / (pvif - 1);
-  pmt = -rate * (montantpv * pvif) / (pvif - 1);
 
 
-  // if (type === 1)
-  pmt /= (1 + rate);
-  // pmt /= 1 + rate; 
-
-  return pmt;
-}
 

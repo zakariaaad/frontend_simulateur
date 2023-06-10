@@ -154,6 +154,15 @@ text-align: center;
   width: 100px;
   margin-right: 6px;
 }
+.text-right{
+  float: right !important;
+}
+#btn-download{
+  width: auto !important;
+  margin-right: 6px;
+  margin-bottom: 7px;
+  margin-top: -38px;
+}
 .btn-primary {
   background-color: #3E54AC;
   border-color: #3E54AC;
@@ -167,7 +176,7 @@ text-align: center;
 }
 .btn-primary:hover {
   background-color: #52d3c7;
-  border-color: #52d3c7;
+  border-color: #52d3c7;    
   color: #fff;
 }
 .btn:hover {

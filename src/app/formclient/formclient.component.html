@@ -6,8 +6,8 @@
 
       <section id="clients" *ngIf="step == 1" formGroupName="infoClients">
         <div class="alert alert-danger" *ngIf="multistep.get('infoClients')?.errors">
-          <strong>Merci de remplire tous les champs qui sont obligatoire indiquer avec
-            *</strong>
+          <strong>Merci de remplire tous les champs qui sont obligatoire indiquer
+            avec *</strong>
         </div>
         <div class="spacer"></div>
         <h5>Infos clients :</h5>
@@ -117,8 +117,8 @@
 
       <section id="simulations" *ngIf="step == 2" formGroupName="infoSimulations">
         <div class="alert alert-danger" *ngIf="multistep.get('infoSimulations')?.errors">
-          <strong>Merci de remplire tous les champs qui sont obligatoire indiquer avec
-            *</strong>
+          <strong>Merci de remplire tous les champs qui sont obligatoire indiquer
+            avec *</strong>
         </div>
         <div class="spacer"></div>
         <h5>Infos crédit</h5>
@@ -158,13 +158,14 @@
 
         <div class="row">
           <div class="col-lg-6">
-            <label for="duree_simulation">Durée crédit</label>
+            <label for="duree_simulation">Durée crédit (par mois)</label>
             <input type="number" class="form-control" id="duree_simulation" placeholder="Durée crédit"
               formControlName="duree_simulation" />
           </div>
           <div class="col-lg-6">
             <label for="type_taux_simulation">Type taux</label>
             <select class="form-select" formControlName="type_taux_simulation" id="type_taux_simulation">
+              <option value="" selected>Choisire...</option>
               <option value="Variable">Variable</option>
               <option value="Fix">Fix</option>
             </select>
@@ -187,7 +188,7 @@
         <div class="spacer"></div>
         <div class="row">
           <div class="col-lg-6">
-            <label for="frequence_simulation">Fréquence</label>
+            <label for="frequence_simulation">Fréquence (mensuelle)</label>
 
             <input type="number" class="form-control" placeholder="Fréquence" id="frequence_simulation"
               formControlName="frequence_simulation" />
@@ -203,19 +204,33 @@
 
         <div class="row">
           <div class="col-lg-6">
-            <label for="assurances_simulation">Type Assurance</label>
+            <label for="frm">Type Assurances</label>
+
+            <div class="form-group" id="frm">
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="Décès" id="flex1" formControlName="caractéristiques_simulation"/>
+                <label class="form-check-label" for="flex1">
+                  Décès
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="Incendie" id="flex2" formControlName="caractéristiques_simulation"/>
+                <label class="form-check-label" for="flex2">
+                  Incendie
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <label for="assurances_simulation">Périodicité prime Décès</label>
 
             <select class="form-select" aria-label="Assurances" id="assurances_simulation"
               formControlName="assurances_simulation">
+              <option value="" selected>Choisire...</option>
               <option value="Prime mensuelle">Prime mensuelle</option>
               <option value="Prime unique">Prime unique</option>
             </select>
-          </div>
-          <div class="col-lg-6">
-            <label for="avance_credit_simulation">Avance sur crédit</label>
-
-            <input type="number" class="form-control" placeholder="Avance sur crédit" id="avance_credit_simulation"
-              formControlName="avance_credit_simulation" />
           </div>
         </div>
         <div class="spacer"></div>
@@ -224,7 +239,7 @@
           <div class="col-lg-6">
             <label for="echeance_mensuelle_simulation">Echéance mensuelle</label>
 
-            <input type="date" class="form-control" placeholder="Echéance" id="echeance_mensuelle_simulation"
+            <input type="number" class="form-control" placeholder="Echéance" id="echeance_mensuelle_simulation"
               formControlName="echeance_mensuelle_simulation" />
           </div>
           <div class="col-lg-6">
@@ -233,10 +248,18 @@
             <input type="number" class="form-control" placeholder="Frais dossier" id="frais_dossier_simulation"
               formControlName="frais_dossier_simulation" />
           </div>
+        <div class="spacer"></div>
+
+          <div class="col-lg-6">
+            <label for="avance_credit_simulation">Avance sur crédit</label>
+
+            <input type="number" class="form-control" placeholder="Avance sur crédit" id="avance_credit_simulation"
+              formControlName="avance_credit_simulation" />
+          </div>
         </div>
       </section>
 
-      <section id="Resultat" *ngIf="step == 3">
+      <section id="resultat" *ngIf="step == 3">
         <div class="container-fluid">
           <div class="row">
             <div class="col-xl-12">
@@ -245,14 +268,15 @@
               <h5 class="clientheading">
                 Nom du client : {{ this.nomclient }}
               </h5>
+              <div class="text-right">
+                <button class="btn btn-success " id="btn-download" (click)="openPDF()">Télécharger PDF</button>
+              </div>
               <table class="sim_cobtainer">
                 <tr>
                   <td>
-                    <img src="../assets/images/iconsim/montant.svg" alt="" width="43px" />
-                    <span class="detail_sim_labels">MONTANT DU CRÉDIT</span>
-                    <span class="detail_sim_labels"></span>
-                    <span class="detail_sim_num" id="montantgener">
-                      {{ this.mntcredit }}</span>DH
+                    <span><img src="../assets/images/iconsim/montant.svg" alt="" width="43px" /></span><span
+                    class="detail_sim_lable_container"><span class="detail_sim_labels">MONTANT DU CRÉDIT
+                      </span><br /><span class="detail_sim_num"> {{ this.mntcredit }} </span><span> DH</span></span>
                   </td>
                   <td>
                     <span><img src="../assets/images/iconsim/interest.svg" alt="" width="43px" /></span>
@@ -270,30 +294,31 @@
                   <td>
                     <span><img src="../assets/images/iconsim/franchise.svg" width="43px" /></span><span
                       class="detail_sim_lable_container"><span class="detail_sim_labels">Franchise
-                        Différé</span><br /><span class="detail_sim_num"> 0 </span><span> Mois</span></span>
+                        Différé</span><br /><span class="detail_sim_num"> 0 </span><span> MOIS</span></span>
                   </td>
                   <td>
                     <span><img src="../assets/images/iconsim/duree.svg" width="43px" /></span><span
                       class="detail_sim_lable_container"><span class="detail_sim_labels">Fréquence de
                         remboursement</span><br /><span class="detail_sim_num" id="frequence"> </span>{{ this.frequence
-                      }}</span>
+                      }} MOIS</span>
                   </td>
                   <td>
                     <span><img src="../assets/images/iconsim/type-interest.svg" alt="" width="43px" /></span><span
                       class="detail_sim_lable_container"><span class="detail_sim_labels">Type de taux</span><br /><span
-                        id="typetx" class="detail_sim_num"> </span></span>
+                        id="typetx" class="detail_sim_num">{{ this.typetaux }}
+                      </span></span>
                   </td>
                 </tr>
                 <tr>
                   <td colspan="2" class="ligh_grey_bg">
                     <span><img src="" width="43px" /></span><span class="detail_sim_lable_container"><span
-                        class="detail_sim_labels">Coût total du crédit</span><br /><span class="cout_txt">
-                        <span>Dhs(Intérêts)</span>
+                        class="detail_sim_labels">Autres Infos </span><br /><span class="cout_txt">
+                        <span>Type de produit : {{ this.typeprod }}</span>
                       </span></span><span class="detail_sim_lable_container mleft"><span
                         class="detail_sim_labels"></span><br /><span class="cout_txt">
-                        <span>Dhs(Assurance)</span>
+                        <span>Avance sur crédit : {{ this.mntavance }}</span>
                       </span></span><span class="detail_sim_lable_container mleft"><span
-                        class="detail_sim_labels"></span><br /><span class="cout_txt">
+                        class="detail_sim_labels"></span><br /><span class="cout_txt">{{ this.fraisdossier }}
                         <span>Dhs(Frais de dossier)</span>
                       </span></span>
                   </td>
@@ -301,7 +326,7 @@
                     <span><img src="../assets/images/iconsim/mensualite.svg" width="43px" /></span><span
                       class="detail_sim_lable_container"><span class="detail_sim_labels white-txt">MENSUALITÉ
                         TTC</span><br /><span class="detail_sim_num white-txt" id="mensualite">
-                        {{ this.mensualitee }}</span></span>
+                        {{ this.mensualitee | number : "1.2-2" }}</span></span>
                   </td>
                 </tr>
               </table>
@@ -314,7 +339,7 @@
                   <thead>
                     <tr>
                       <th colspan="3" style="text-align: center">
-                        Montant sollicité
+                        Frais Assurances TTC
                       </th>
                       <th rowspan="2">Frais de dossier TTC</th>
                       <th rowspan="2">Montant à débloquer</th>
@@ -328,18 +353,18 @@
                   <tbody>
                     <tr>
                       <td data-cell-title="Décès" style="color: #121212; border: 1px solid">
-                        Prime mensuelle
+                        {{this.prime}}
                       </td>
                       <td data-cell-title="Incendie" style="color: #121212; border: 1px solid">
-                        1,138.00
+                        1,138 DH
                       </td>
                       <td data-cell-title="Total" style="color: #121212; border: 1px solid">
-                        1,138.00
+                        1,138 DH
                       </td>
                       <td data-cell-title="Frais de dossier TTC " style="color: #121212; border: 1px solid">
-                        2,310.00
+                        {{ this.fraisdossier }} DH
                       </td>
-                      <td data-cell-title="Montant à débloquer" style="color: #121212; border: 1px solid"></td>
+                      <td data-cell-title="Montant à débloquer" style="color: #121212; border: 1px solid">{{this.mntndebloquer}}  DH</td>
                     </tr>
                   </tbody>
                 </table>

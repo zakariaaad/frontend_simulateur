@@ -198,8 +198,8 @@ HEADER :::
 
 
 
-
-
+<section id="clients" *ngIf="step == 1" formGroupName="infoClients">
+<section id="simulations" *ngIf="step == 2" formGroupName="infoSimulations">
 
 
 Montant Mensualité calcul:
