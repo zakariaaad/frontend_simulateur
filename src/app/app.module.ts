@@ -19,6 +19,9 @@ import { NoPermissionComponent } from './no-permission/no-permission.component';
 import { ListsimulationsComponent } from './listsimulations/listsimulations.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsimComponent } from './detailsim/detailsim.component';
+import { EditcltComponent } from './editclt/editclt.component';
+import { EditsimComponent } from './editsim/editsim.component';
+import { DetailcltComponent } from './detailclt/detailclt.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { DetailsimComponent } from './detailsim/detailsim.component';
     NoPermissionComponent,
     ListsimulationsComponent,
     HomeComponent,
-    DetailsimComponent
+    DetailsimComponent,
+    EditcltComponent,
+    EditsimComponent,
+    DetailcltComponent
   ],
   imports: [
     BrowserModule,

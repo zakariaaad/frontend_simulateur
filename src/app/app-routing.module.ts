@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { ListcltsComponent } from './listclts/listclts.component';
 import { ListsimulationsComponent } from './listsimulations/listsimulations.component';
 import { HomeComponent } from './home/home.component';
+import { EditcltComponent } from './editclt/editclt.component';
 
 const routes: Routes = [
 {
@@ -25,10 +26,7 @@ const routes: Routes = [
   path: 'login',
   component: LoginComponent
 },
-{
-  path: 'clients',
-  component: ListcltsComponent
-},
+
 {
   path: 'simulations',
   component: ListsimulationsComponent
@@ -36,6 +34,14 @@ const routes: Routes = [
 {
   path: 'creation-simulation',
   component: FormclientComponent
+},
+{
+  path: 'clients/:id_client',
+  component: EditcltComponent
+},
+{
+  path: 'clients',
+  component: ListcltsComponent
 },
 ];
 

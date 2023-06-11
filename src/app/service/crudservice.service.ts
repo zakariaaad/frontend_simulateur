@@ -16,7 +16,10 @@ const httplink = {
   getAllClients: apiUrl + 'api/v1/clients/',
   saveClient: apiUrl + 'api/v1/clients/addclt',
   saveSimulation: apiUrl + 'api/v1/simulations/addsim',
+  editClient: apiUrl + 'api/v1/clients',
+  editSimulation: apiUrl + 'api/v1/simulations',
   getAllSimulation: apiUrl + 'api/v1/simulations/',
+  getClientById: apiUrl + 'api/v1/clients',
 }
 
 @Injectable({
@@ -25,29 +28,39 @@ const httplink = {
 export class CrudserviceService {
 
   constructor(private apiConfig: ConfigapiService) { }
-  // constructor(private httpClient: HttpClient) { }
 
   //Ajouter clients data
-  public addClient(client: any): Observable<any>{
-    // return this.apiConfig.post(httplink.saveClient, client, httpOptions);
+  public addClient(client: any): Observable<any> {
+
     return this.apiConfig.post(httplink.saveClient, client);
   }
 
   //Ajouter Simulation data
-  public addSimulation(simulation: any): Observable<any>{
-    // return this.apiConfig.post(httplink.saveSimulation, simulation, httpOptions);
+  public addSimulation(simulation: any): Observable<any> {
     return this.apiConfig.post(httplink.saveSimulation, simulation);
   }
 
   //Get list clients
-  public getAllClients (): Observable<any>{
-  
-      return this.apiConfig.get(httplink.getAllClients)
+  public getAllClients(): Observable<any> {
+
+    return this.apiConfig.get(httplink.getAllClients)
   }
- 
-  public getAllSimulation (): Observable<any>{
-  
+
+  //Get list simulations
+  public getAllSimulation(): Observable<any> {
+
     return this.apiConfig.get(httplink.getAllSimulation)
-}
+  }
+
+  //Modifier Client
+  public editClient(id:string, data: any): Observable<any>{
+    return this.apiConfig.put(`${httplink.editClient}/${id}`, data)
+  }
+
+  //Get Single Client By ID
+  public findClientById(id:string): Observable<any>{
+    return this.apiConfig.get(`${httplink.getClientById}/${id}`)
+  }
+
 
 }

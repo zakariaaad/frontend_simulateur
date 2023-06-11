@@ -1,0 +1,106 @@
+<div class="wrapper">
+    <nav aria-label="breadcrumb" class="d-inline-block">
+        <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
+            <li class="breadcrumb-item text-capitalize"><a href="">Accueil</a></li>
+            <li class="breadcrumb-item text-capitalize"><a href="#">Gestion Clients</a></li>
+            <li class="breadcrumb-item text-capitalize active" aria-current="page">Modifier client</li>
+        </ul>
+    </nav>
+    <h3 class="heading center">Modification des infos client</h3>
+
+    <div class="container">
+        <div class="spacer"></div>
+
+        <div class="spacer"></div>
+        <form #f="ngForm" (ngSubmit)="updateClient()" method="post">
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="nom_prenom_client">Nom complet</label>
+                    <span class="text-danger"> *</span>
+                    <input #nom_prenom_client="ngModel" name="nom_prenom_client" type="text"
+                        [(ngModel)]="clients.nom_prenom_client" class="form-control" placeholder="Nom complet"
+                        id="nom_prenom_client" />
+                </div>
+                <div class="col-lg-6">
+                    <label for="telephone_client">Téléphone</label>
+                    <span class="text-danger"> *</span>
+                    <input #telephone_client="ngModel" name="telephone_client" type="number" class="form-control"
+                        [(ngModel)]="clients.telephone_client" placeholder="Téléphone" id="telephone_client" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="numero_cin_client">Numéro CIN</label>
+                    <span class="text-danger"> *</span>
+                    <input type="text" #numero_cin_client="ngModel" [(ngModel)]="clients.numero_cin_client"
+                        name="numero_cin_client" class="form-control" id="numero_cin_client" placeholder="CIN" />
+                </div>
+                <div class="col-lg-6">
+                    <label for="email_client">Email</label>
+                    <input type="text" #email_client="ngModel" [(ngModel)]="clients.email_client" name="email_client"
+                        class="form-control" id="email_client" placeholder="Email" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="age_client">Age</label>
+                    <span class="text-danger"> *</span>
+                    <input type="text" #age_client="ngModel" [(ngModel)]="clients.age_client" class="form-control"
+                        name="age_client" placeholder="Age" id="age_client" />
+                </div>
+                <div class="col-lg-6">
+                    <label for="ville_client">Ville</label>
+                    <span class="text-danger"> *</span>
+                    <select class="form-select" aria-label="Ville" id="ville_client">
+                        <option value="" selected>Choisire...</option>
+                        <option value="Kenitra">Kenitra</option>
+                        <option value="Rabat">Rabat</option>
+                        <option value="Casablanca">Casablanca</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="profession_client">Profession</label>
+                    <span class="text-danger"> *</span>
+                    <select class="form-select" aria-label="Profession" id="profession_client">
+                        <option value="" selected>Choisire...</option>
+                        <option value="Fonctionnaire">Fonctionnaire</option>
+                        <option value="Salarié">Salarié</option>
+                        <option value="Profession libérale">Profession libérale</option>
+                        <option value="Auto-entrepreneur">Auto-entrepreneur</option>
+                    </select>
+                </div>
+                <div class="col-lg-6">
+                    <label for="revenu_principale_client">Salaire</label>
+                    <input type="number" #revenu_principale_client="ngModel"
+                        [(ngModel)]="clients.revenu_principale_client" class="form-control"
+                        id="revenu_principale_client" name="revenu_principale_client" placeholder="Salaire" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="date_naissance_client">Date naissance</label>
+
+                    <input type="date" #date_naissance_client="ngModel" [(ngModel)]="clients.date_naissance_client"
+                        id="date_naissance_client" class="form-control" name="date_naissance_client" placeholder="" />
+                </div>
+                <div class="col-lg-6">
+                    <label for="adresse_client">Adresse</label>
+
+                    <input type="text" #adresse_client="ngModel" [(ngModel)]="clients.adresse_client"
+                        class="form-control" id="adresse_client" name="adresse_client" placeholder="Adresse" />
+                </div>
+            </div>
+            <div class="btnright">
+                <button class="btn btn-primary" type="submit">
+                    Modifier
+                </button>
+                <button class="btn btn-dark" type="reset">
+                    Annuler
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

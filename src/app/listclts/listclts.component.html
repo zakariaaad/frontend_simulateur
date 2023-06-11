@@ -29,7 +29,7 @@
                         </thead>
                         <tbody>
                             <!-- Start -->
-                            <tr *ngFor="let client of clients">
+                            <tr *ngFor="let client of clients ">
                                 <th class="p-3"> <a href="#" class="text-primary">{{client.nom_prenom_client}}</a></th>
                                 <td class="p-3">
                                         <span class="ms-2">{{client.numero_cin_client}}</span>
@@ -40,7 +40,7 @@
                                 <td class="text-center p-3">{{client.ville_client}}</td>
                                 <td class="text-center p-3">{{client.telephone_client}}</td>
                                 <td class="text-end p-3">
-                                    <a href="#" class="btn btn-sm btn-primary">Modifier</a>
+                                    <a routerLink="{{client.id_client}}" class="btn btn-sm btn-primary">Modifier</a>
                                     <a href="#" class="btn btn-sm btn-soft-primary ms-2">Supprimer</a>
                                 </td>
                             </tr>

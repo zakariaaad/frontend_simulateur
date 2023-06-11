@@ -38,6 +38,14 @@ export class ConfigapiService {
     );
   }
 
+  put(url: string,  data:any): Observable<any> {
+    // return this.httpClient.put(`${url}/${id}`, data)
+    return this.httpClient.put(url, data).pipe(
+      map((response: any) => this.ReturnResponseData(response)),
+      catchError(this.handleError)
+    );
+  }
+
   private ReturnResponseData(response: any) {
     return response;
   }
