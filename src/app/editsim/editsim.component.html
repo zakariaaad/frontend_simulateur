@@ -24,11 +24,115 @@
                 <div class="col-lg-6">
                     <label for="prix_produit_simulation">Prix produit</label>
                     <span class="text-danger"> *</span>
-                    <input #prix_produit_simulation="ngModel" name="prix_produit_simulation" type="number" class="form-control"
-                        [(ngModel)]="simulation.prix_produit_simulation" placeholder="Téléphone" id="prix_produit_simulation" />
+                    <input #prix_produit_simulation="ngModel" name="prix_produit_simulation" type="number"
+                        class="form-control" [(ngModel)]="simulation.prix_produit_simulation" placeholder="Téléphone"
+                        id="prix_produit_simulation" />
                 </div>
             </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="duree_simulation">Durée crédit (par mois)</label>
+                    <input #duree_simulation="ngModel" name="duree_simulation" type="number" class="form-control"
+                        id="duree_simulation" placeholder="Durée crédit" [(ngModel)]="simulation.duree_simulation" />
+                </div>
+                <div class="col-lg-6">
+                    <label for="type_taux_simulation">Type taux</label>
 
+                    <input #type_taux_simulation="ngModel" name="type_taux_simulation" type="number"
+                        class="form-control" [(ngModel)]="simulation.type_taux_simulation" placeholder="Téléphone"
+                        id="type_taux_simulation" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="duree_simulation">Taux d'intérêt</label>
+                    <input #tauxinteret_simulation="ngModel" name="tauxinteret_simulation" type="number"
+                        class="form-control" id="tauxinteret_simulation" placeholder="taux d'interert"
+                        [(ngModel)]="simulation.tauxinteret_simulation" />
+                </div>
+                <div class="col-lg-6">
+                    <label for="montant_remise_simulation">Montant de remise</label>
+
+                    <input #montant_remise_simulation="ngModel" name="montant_remise_simulation" type="number"
+                        class="form-control" [(ngModel)]="simulation.montant_remise_simulation" placeholder="Montant"
+                        id="montant_remise_simulation" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="frequence_simulation">Fréquence (mensuelle)</label>
+                    <input #frequence_simulation="ngModel" name="frequence_simulation" type="number"
+                        class="form-control" id="frequence_simulation" placeholder="frequence"
+                        [(ngModel)]="simulation.frequence_simulation" />
+                </div>
+                <div class="col-lg-6">
+                    <label for="assurance_deces_simulation">Assurance Dèces %</label>
+
+                    <input #assurance_deces_simulation="ngModel" name="assurance_deces_simulation" type="number"
+                        class="form-control" [(ngModel)]="simulation.assurance_deces_simulation" placeholder="assurance"
+                        id="assurance_deces_simulation" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="frm">Type Assurances</label>
+
+                    <div class="form-group" id="frm">
+
+                        <div class="form-check form-check-inline">
+                            <input #caracteristiques_simulation="ngModel" name="caracteristiques_simulation" class="form-check-input" type="checkbox" value="Décès" id="flex1"
+                            [(ngModel)]="simulation.caracteristiques_simulation"/>
+                            <label class="form-check-label" for="flex1">
+                                Décès
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="Incendie" id="flex2" #caracteristiques_simulation="ngModel" name="caracteristiques_simulation" [(ngModel)]="simulation.caracteristiques_simulation"/>
+                            <label class="form-check-label" for="flex2">
+                                Incendie
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <label for="assurances_simulation">Périodicité prime Décès</label>
+
+                    <select class="form-select" aria-label="Assurances" #assurances_simulation="ngModel" [(ngModel)]="simulation.assurances_simulation" id="assurances_simulation"
+                        name="assurances_simulation">
+                        <option value="" selected>Choisire...</option>
+                        <option value="Prime mensuelle">Prime mensuelle</option>
+                        <option value="Prime unique">Prime unique</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="echeance_mensuelle_simulation">Echéance mensuelle</label>
+                    <input #echeance_mensuelle_simulation="ngModel" name="echeance_mensuelle_simulation" type="number"
+                        class="form-control" id="echeance_mensuelle_simulation" placeholder="frequence"
+                        [(ngModel)]="simulation.echeance_mensuelle_simulation" />
+                </div>
+                <div class="col-lg-6">
+                    <label for="assurance_deces_simulation">Frais dossier</label>
+                    <input #frais_dossier_simulation="ngModel" name="frais_dossier_simulation" type="number"
+                        class="form-control" [(ngModel)]="simulation.frais_dossier_simulation" placeholder="assurance"
+                        id="frais_dossier_simulation" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <label for="avance_credit_simulation">Avance sur crédit</label>
+                    <input #avance_credit_simulation="ngModel" name="avance_credit_simulation" type="number"
+                        class="form-control" id="avance_credit_simulation" placeholder="Avance "
+                        [(ngModel)]="simulation.avance_credit_simulation" />
+                </div>
+                <!-- <div class="col-lg-6">
+                    <label for="type_avance_simulation">Type d'avance</label>
+                    <input #type_avance_simulation="ngModel" name="type_avance_simulation" type="number"
+                        class="form-control" [(ngModel)]="simulation.type_avance_simulation" placeholder="Type"
+                        id="type_avance_simulation" />
+                </div> -->
+            </div>
             <div class="btnright">
                 <button class="btn btn-primary" type="submit">
                     Modifier

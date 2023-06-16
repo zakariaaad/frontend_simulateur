@@ -20,6 +20,7 @@ const httplink = {
   editSimulation: apiUrl + 'api/v1/simulations',
   getAllSimulation: apiUrl + 'api/v1/simulations/',
   getClientById: apiUrl + 'api/v1/clients',
+  getSimById: apiUrl + 'api/v1/simulations',
 }
 
 @Injectable({
@@ -62,5 +63,13 @@ export class CrudserviceService {
     return this.apiConfig.get(`${httplink.getClientById}/${id}`)
   }
 
+    //Get Single Client By ID
+    public findSimById(id:string): Observable<any>{
+      return this.apiConfig.get(`${httplink.getSimById}/${id}`)
+    }
+  //Modifier Client
+  public editSim(id:string, data: any): Observable<any>{
+    return this.apiConfig.put(`${httplink.editSimulation}/${id}`, data)
+  }
 
 }

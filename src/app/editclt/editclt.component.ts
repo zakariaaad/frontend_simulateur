@@ -19,7 +19,7 @@ export class EditcltComponent implements OnInit {
 
   async ngOnInit(){
      this.id_client = await this.route.snapshot.params['id_client'];
-    console.log("idclt",this.id_client);
+
     await this.getDetailClientById();
 
   }
