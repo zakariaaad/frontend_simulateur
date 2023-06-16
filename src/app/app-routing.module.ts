@@ -8,6 +8,8 @@ import { ListcltsComponent } from './listclts/listclts.component';
 import { ListsimulationsComponent } from './listsimulations/listsimulations.component';
 import { HomeComponent } from './home/home.component';
 import { EditcltComponent } from './editclt/editclt.component';
+import { EditsimComponent } from './editsim/editsim.component';
+import { NoPermissionComponent } from './no-permission/no-permission.component';
 
 const routes: Routes = [
 {
@@ -23,13 +25,12 @@ const routes: Routes = [
   component: AboutComponent
 },
 {
+  path: 'permission-error',
+  component: NoPermissionComponent
+},
+{
   path: 'login',
   component: LoginComponent
-},
-
-{
-  path: 'simulations',
-  component: ListsimulationsComponent
 },
 {
   path: 'creation-simulation',
@@ -42,6 +43,14 @@ const routes: Routes = [
 {
   path: 'clients',
   component: ListcltsComponent
+},
+{
+  path: 'simulations/:id_simulation',
+  component: EditsimComponent
+},
+{
+  path: 'simulations',
+  component: ListsimulationsComponent
 },
 ];
 

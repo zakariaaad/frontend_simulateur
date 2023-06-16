@@ -52,7 +52,7 @@
                 <div class="col-lg-6">
                     <label for="ville_client">Ville</label>
                     <span class="text-danger"> *</span>
-                    <select class="form-select" aria-label="Ville" id="ville_client">
+                    <select class="form-select" name="ville_client" #ville_client="ngModel" [(ngModel)]="clients.ville_client" aria-label="Ville" id="ville_client">
                         <option value="" selected>Choisire...</option>
                         <option value="Kenitra">Kenitra</option>
                         <option value="Rabat">Rabat</option>
@@ -64,7 +64,7 @@
                 <div class="col-lg-6">
                     <label for="profession_client">Profession</label>
                     <span class="text-danger"> *</span>
-                    <select class="form-select" aria-label="Profession" id="profession_client">
+                    <select class="form-select" name="profession_client" #profession_client="ngModel" [(ngModel)]="clients.profession_client" aria-label="Profession" id="profession_client">
                         <option value="" selected>Choisire...</option>
                         <option value="Fonctionnaire">Fonctionnaire</option>
                         <option value="Salarié">Salarié</option>

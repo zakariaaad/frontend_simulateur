@@ -11,13 +11,11 @@ export class ListsimulationsComponent implements OnInit {
 
   constructor(private route: Router,
     private httpcrud: CrudserviceService){}
-    simulations: any = [];
-ngOnInit() {
-    // this.httpcrud.getAllSimulation();
-    this.getAllSimulationslist();
-    console.log("HHHHHHH");
-
     
+simulations: any = [];
+ngOnInit() {
+
+    this.getAllSimulationslist();
 }
 
 async getAllSimulationslist ()

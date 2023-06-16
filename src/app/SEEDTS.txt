@@ -2,8 +2,36 @@
     //   this.step = this.step + 1;
     // }
 
+          // this.clientform.value.nom_prenom_client = resultData[0].nom_prenom_client;
+          // this.clientform.value.telephone_client = resultData[0].telephone_client;
+          // this.clientform.value.numero_cin_client = resultData[0].numero_cin_client;
+          // this.clientform.value.email_client = resultData[0].email_client;
+          // this.clientform.value.age_client = resultData[0].age_client;
+          // this.clientform.value.ville_client = resultData[0].ville_client;
+          // this.clientform.value.date_naissance_client = resultData[0].date_naissance_client;
+          // this.clientform.value.adresse_client = resultData[0].adresse_client;
+          // this.clientform.value.revenu_principale_client = resultData[0].revenu_principale_client;
+          // this.clientform.value.numero_cin_client = resultData.numero_cin_client;
+          // this.clientform.LastName = resultData.lastName;
 
     // Fin Validate Simulation
     // if (this.step == 4) {
     //   this.router.navigate(['/validation'])
     // }
+
+
+    //editClient
+    
+    // const result = this.clientform.patchValue({
+    //   nom_prenom_client: '',
+    //   telephone_client: '',
+    //   numero_cin_client: '',
+    //   email_client: '',
+    //   age_client: '',
+    //   ville_client: '',
+    //   profession_client: '',
+    //   date_naissance_client: '',
+    //   adresse_client: '',
+    //   revenu_principale_client: ''
+    // })
+    // this.data =  result
