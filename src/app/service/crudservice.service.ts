@@ -28,7 +28,7 @@ const httplink = {
 })
 export class CrudserviceService {
 
-  constructor(private apiConfig: ConfigapiService) { }
+  constructor(private apiConfig: ConfigapiService, private httpClient: HttpClient) { }
 
   //Ajouter clients data
   public addClient(client: any): Observable<any> {
@@ -64,12 +64,16 @@ export class CrudserviceService {
   }
 
     //Get Single Client By ID
-    public findSimById(id:string): Observable<any>{
+  public findSimById(id:string): Observable<any>{
       return this.apiConfig.get(`${httplink.getSimById}/${id}`)
     }
+
   //Modifier Client
   public editSim(id:string, data: any): Observable<any>{
     return this.apiConfig.put(`${httplink.editSimulation}/${id}`, data)
   }
 
+  public deleteclt(id:string): Observable<any>{
+    return this.httpClient.delete(`${httplink.getClientById}/${id}`);
+  }
 }

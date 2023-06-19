@@ -2366,3 +2366,11 @@ p {
   opacity: 0.9;
 }
 
+#right{
+float: right;
+}
+
+#botttom{
+margin-bottom: 2rem;
+}
+

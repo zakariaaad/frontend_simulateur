@@ -22,6 +22,7 @@ import { DetailsimComponent } from './detailsim/detailsim.component';
 import { EditcltComponent } from './editclt/editclt.component';
 import { EditsimComponent } from './editsim/editsim.component';
 import { DetailcltComponent } from './detailclt/detailclt.component';
+// import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { DetailcltComponent } from './detailclt/detailclt.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    // DataTablesModule
   ],
   providers: [
     CrudserviceService,

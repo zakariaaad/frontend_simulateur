@@ -11,6 +11,7 @@ import { pmt } from 'financial'
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
+
 @Component({
   selector: 'app-formclient',
   templateUrl: './formclient.component.html',
@@ -67,7 +68,7 @@ export class FormclientComponent implements OnInit {
     }),
   });
   @ViewChild('resultat') resultat!: ElementRef;
-  constructor(private router: Router, private httpcrud: CrudserviceService) { }
+  constructor(private router: Router, private httpcrud: CrudserviceService) {}
   ngOnInit(): void { }
 
   async submit() {
@@ -198,6 +199,8 @@ export class FormclientComponent implements OnInit {
       PDF.save('resultatcredit.pdf');
     });
   }
+
+
 }
 
 
