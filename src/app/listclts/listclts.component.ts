@@ -14,21 +14,22 @@ import { DatePipe } from '@angular/common';
 export class ListcltsComponent implements OnInit {
 
   clients: any = [];
-  currentDate:any = new Date();
+  currentDate: any = new Date();
 
   constructor(private router: Router,
             private httpcrud: CrudserviceService,
             private datePipe: DatePipe){
-              // if (this.currentDate != null){this.currentDate = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');}
+              if (this.currentDate != null){this.currentDate = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd');}
               
             }
 
   ngOnInit() {
     // let id = this.route.snapshot.paramMap.get('id');
-    this.currentDate.toLocaleDateString();
-
+    // this.currentDate.toLocaleDateString();
     // let page = this.route.snapshot.queryParamMap.get('page');
     this.getListClients();
+console.log('ttt',this.currentDate);
+    
   }
 
 async getListClients ()
@@ -52,7 +53,7 @@ supprimer(id_client: any)
     // return false
     this.httpcrud.deleteclt(id_client).subscribe();
   }else{
-  return;
+  return ;
   }
 
 }
@@ -61,7 +62,6 @@ fileName= this.currentDate + 'Clients.xlsx';
 
 exportExcel()
 {
-
     /* pass here the table id */
     let element = document.getElementById('clients');
     const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
@@ -72,7 +72,6 @@ exportExcel()
  
     /* save to file */  
     XLSX.writeFile(wb, this.fileName);
-
 }
 
 }

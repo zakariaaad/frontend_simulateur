@@ -14,7 +14,7 @@ import { CrudserviceService } from './service/crudservice.service';
 import { ConfigapiService } from './service/configapi.service';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
-import { AuthserviceService } from './service/authservice.service';
+import { Authservice as Authservice } from './service/authservice.service';
 import { NoPermissionComponent } from './no-permission/no-permission.component';
 import { ListsimulationsComponent } from './listsimulations/listsimulations.component';
 import { HomeComponent } from './home/home.component';
@@ -54,7 +54,7 @@ import { DetailcltComponent } from './detailclt/detailclt.component';
   providers: [
     CrudserviceService,
     ConfigapiService,
-    AuthserviceService
+    Authservice
   ],
   bootstrap: [AppComponent,
     HeaderComponent,

@@ -15,7 +15,7 @@ const httplink = {
 @Injectable({
   providedIn: 'root',
 })
-export class AuthserviceService {
+export class Authservice {
   constructor(private http: HttpClient,
     private router : Router) {}
 
