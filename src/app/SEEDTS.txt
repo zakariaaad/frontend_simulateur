@@ -35,3 +35,28 @@
     //   revenu_principale_client: ''
     // })
     // this.data =  result
+
+
+
+        // let id = this.route.snapshot.paramMap.get('id');
+    // this.currentDate.toLocaleDateString();
+    // let page = this.route.snapshot.queryParamMap.get('page');
+
+      // async canActivate(
+  //   route: ActivatedRouteSnapshot,
+  //   state: RouterStateSnapshot
+  // ): Promise<boolean | UrlTree> {
+  //   let result = await this.auth.user.subscribe();
+  //   if (!result) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
+
+    // async isAuthenticated() {
+    //   await this.auth.user.subscribe(user => {
+    //     if (user){return true;} else{
+    //     this.router.navigate(['/login']);
+    //     return false;}
+    //   });
+    // }

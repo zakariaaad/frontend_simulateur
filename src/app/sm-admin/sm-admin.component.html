@@ -1,0 +1,283 @@
+        <!-- Start Page Content -->
+            <main class="page-content bg-light">
+  
+
+                <div class="container-fluid">
+                    <div class="layout-specing">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                            <div class="spacer"></div>
+
+                                <h6 class="text-muted mb-1">Bonjour, Utilisateur!</h6>
+                                <h5 class="mb-0">Tableau de bord</h5>
+                            </div>
+
+                            <div class="mb-0 position-relative">
+                                <select class="form-select form-control" id="dailychart">
+                                    <option selected="">Mensuelle</option>
+                                    <option value="aug">Annuelle</option>
+                                    <option value="jul">Hebdomadaire</option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <div class="row row-cols-xl-5 row-cols-md-2 row-cols-1">
+                            <div class="col mt-4">
+                                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-white rounded shadow p-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon text-center rounded-pill">
+                                            <i class="uil uil-user-circle fs-4 mb-0"></i>
+                                        </div>
+                                        <div class="flex-1 ms-3">
+                                            <h6 class="mb-0 text-muted">Total Clients</h6>
+                                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="4589">2100</span></p>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </div><!--end col-->
+                            
+                            <div class="col mt-4">
+                                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-white rounded shadow p-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon text-center rounded-pill">
+                                            <i class="uil uil-usd-circle fs-4 mb-0"></i>
+                                        </div>
+                                        <div class="flex-1 ms-3">
+                                            <h6 class="mb-0 text-muted">Total Simulations</h6>
+                                            <p class="fs-5 text-dark fw-bold mb-0">$<span class="counter-value" data-target="48575">35214</span></p>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </div><!--end col-->
+                            
+                            <div class="col mt-4">
+                                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-white rounded shadow p-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon text-center rounded-pill">
+                                            <i class="uil uil-shopping-bag fs-4 mb-0"></i>
+                                        </div>
+                                        <div class="flex-1 ms-3">
+                                            <h6 class="mb-0 text-muted">Total Crédits</h6>
+                                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="4800">3402</span></p>
+                                        </div>
+                                    </div>
+
+           
+                                </a>
+                            </div><!--end col-->
+                            
+                            <div class="col mt-4">
+                                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-white rounded shadow p-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon text-center rounded-pill">
+                                            <i class="uil uil-store fs-4 mb-0"></i>
+                                        </div>
+                                        <div class="flex-1 ms-3">
+                                            <h6 class="mb-0 text-muted">Total Produits</h6>
+                                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="145">10</span></p>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </div><!--end col-->
+                            
+                            <div class="col mt-4">
+                                <a href="#!" class="features feature-primary d-flex justify-content-between align-items-center bg-white rounded shadow p-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="icon text-center rounded-pill">
+                                            <i class="uil uil-users-alt fs-4 mb-0"></i>
+                                        </div>
+                                        <div class="flex-1 ms-3">
+                                            <h6 class="mb-0 text-muted">Users</h6>
+                                            <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value" data-target="9">1.5</span>M</p>
+                                        </div>
+                                    </div>
+
+                                    <span class="text-danger"><i class="uil uil-chart-down"></i> 0.5%</span>
+                                </a>
+                            </div><!--end col-->
+                        </div><!--end row-->
+
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-7 mt-4">
+                                <div class="card shadow border-0 p-4 pb-0 rounded">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="mb-0 fw-bold">Graphique Des simulations</h6>
+                                        
+                                        <div class="mb-0 position-relative">
+                                            <select class="form-select form-control" id="yearchart">
+                                                <option selected>2023</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2019">2019</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div id="dashboard" class="apex-chart"></div>
+                                </div>
+                            </div><!--end col-->
+
+                            <div class="col-xl-4 col-lg-5 mt-4 rounded">
+                                <div class="card shadow border-0">
+                                    <div class="p-4 border-bottom">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-0 fw-bold">Récents Clients</h6>
+                                            
+                                            <a href="#!" class="text-primary">Voir plus <i class="uil uil-arrow-right align-middle"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-4" data-simplebar style="height: 365px;">
+                                        <a href="javascript:void(0)" class="features feature-primary key-feature d-flex align-items-center justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <div class="icon text-center rounded-circle me-3">
+                                                    <i class="ti ti-users"></i>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <h6 class="mb-0 text-dark">Client 1</h6>
+                                                    <small class="text-muted">test</small>
+                                                </div>
+                                            </div>
+
+                                            <i class="ti ti-arrow-up text-warning"></i>
+                                        </a>
+
+                                        <a href="javascript:void(0)" class="features feature-success key-feature d-flex align-items-center justify-content-between mt-4">
+                                            <div class="d-flex align-items-center">
+                                                <div class="icon text-center rounded-circle me-3">
+                                                    <i class="ti ti-gift"></i>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <h6 class="mb-0 text-dark">Client 2</h6>
+                                                    <small class="text-muted">test</small>
+                                                </div>
+                                            </div>
+
+                                            <i class="ti ti-arrow-down text-success"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><!--end col-->
+                        </div><!--end row-->
+
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="row">
+                                    <div class="col-xl-12 mt-4">
+                                        <div class="card rounded shadow border-0 p-4">
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <h6 class="mb-0">Moyenne des crédits</h6>
+
+                                                <div class="text-end">
+                                                    <h5 class="mb-0">2384</h5>
+                                                    <h6 class="text-muted mb-0">September</h6>
+                                                </div>
+                                            </div>
+                                            <div id="sale-chart"></div>
+                                        </div>
+                                    </div><!--end col-->
+                                    
+
+                                </div><!--end row-->
+                            </div><!--end col-->
+
+                            <div class="col-xl-8 mt-4">
+                                <div class="d-flex justify-content-between p-4 bg-white shadow rounded-top">
+                                    <h6 class="fw-bold mb-0">Derniers Simulations</h6>
+
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="dropdown dropdown-primary list-inline-item">
+                                            <button type="button" class="btn btn-icon btn-pills btn-soft-primary dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ti ti-dots-vertical"></i></button>
+                                            <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3">
+                                                <a class="dropdown-item text-dark" href="#"> Paid</a>
+                                                <a class="dropdown-item text-dark" href="#"> Unpaid</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="table-responsive shadow rounded-bottom" data-simplebar style="height: 550px;">
+                                    <table class="table table-center bg-white mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-bottom p-3">No.</th>
+                                                <th class="border-bottom p-3" style="min-width: 220px;">Client Name</th>
+                                                <th class="text-center border-bottom p-3">Montant</th>
+                                                <th class="text-center border-bottom p-3" style="min-width: 150px;">test</th>
+                                                <th class="text-center border-bottom p-3">Status</th>
+                                                <th class="text-end border-bottom p-3" style="min-width: 100px;">Preview</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Start -->
+                                            <tr>
+                                                <th class="p-3">#d01</th>
+                                                <td class="p-3">
+                                                    <a href="#" class="text-primary">
+                                                        <div class="d-flex align-items-center">
+                                                           
+                                                            <span class="ms-2">Howard Tanner</span>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td class="text-center p-3">$253</td>
+                                                <td class="text-center p-3">23th Sept 2021</td>
+                                                <td class="text-center p-3">
+                                                    <div class="badge bg-soft-danger rounded px-3 py-1">
+                                                        Unpaid
+                                                    </div>
+                                                </td>
+                                                <td class="text-end p-3">
+                                                    <a href="" class="btn btn-sm btn-primary">Preview</a>
+                                                </td>
+                                            </tr>
+                                            <!-- End -->
+
+                                            <!-- Start -->
+                                            <tr>
+                                                <th class="p-3">#d02</th>
+                                                <td class="p-3">
+                                                    <a href="#" class="text-primary">
+                                                        <div class="d-flex align-items-center">
+                                                            
+                                                            <span class="ms-2">Wendy Filson</span>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td class="text-center p-3">$482</td>
+                                                <td class="text-center p-3">11th Sept 2021</td>
+                                                <td class="text-center p-3">
+                                                    <div class="badge bg-soft-success rounded px-3 py-1">
+                                                        Paid
+                                                    </div>
+                                                </td>
+                                                <td class="text-end p-3">
+                                                    <a href="" class="btn btn-sm btn-primary">Preview</a>
+                                                </td>
+                                            </tr>
+                                            <!-- End -->
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!--end col-->
+                        </div><!--end row-->
+                    </div>
+                </div><!--end container-->
+
+
+            </main>
+            <!--End page-content" -->
+
+
+<!-- tobii js -->
+<script src="../assets/js/apexcharts.min.js"></script>
+
+<script src="../assets/js/tobii.min.js "></script>
+<script src="../assets/js/simplebar.min.js"></script>
+<!-- Icons -->
+<script src="../assets/js/feather.min.js"></script>
+<!-- Main Js -->
+<script src="../assets/js/plugins.init.js"></script>
+<!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+<script src="../assets/js/app.js"></script>

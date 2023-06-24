@@ -1,8 +1,9 @@
-<div class="spacermg" style="margin-top: 4rem;"></div>
+<div class="spacerhead"></div>
+
 <div class="container-fluid">
     <div class="layout-specing">
-        <div class="d-md-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Liste des simulations</h5>
+        <div class="d-md-flex justify-content-between align-items-center" id="botttom">
+            <h3 class="mb-0">Liste des simulations</h3>
 
             <nav aria-label="breadcrumb" class="d-inline-block">
                 <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
@@ -14,14 +15,27 @@
         </div>
 
         <div class="row">
-            <div class="col-12 mt-4">
+            <div class="form-group row">
+                <div class="col-lg-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Nom du client"
+                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-dark" type="button" id="button-addon2">Recherche</button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <button class="btn btn-dark" type="button" id="right" (click)="exportExcel()">Exporter
+                        excel</button>
+                </div>
+            </div>
+            <div class="col-12 mt-2">
                 <div class="table-responsive shadow rounded">
-                    <table class="table table-center bg-white mb-0">
+                    <table class="table table-center bg-white mb-0" id="simulations">
                         <thead>
                             <tr>
                                 <th class="border-bottom p-3">N.Simulation</th>
-                                <th class="border-bottom p-3" >Client</th>
-                                <th class="text-center border-bottom p-3" >Date</th>
+                                <th class="border-bottom p-3">Client</th>
+                                <th class="text-center border-bottom p-3">Date</th>
                                 <th class="text-center border-bottom p-3">Montant de crédit</th>
                                 <th class="text-center border-bottom p-3" style="min-width: 150px;">Type de produit</th>
                                 <th class="text-center border-bottom p-3">Durée</th>
@@ -30,7 +44,12 @@
                         </thead>
                         <tbody>
                             <!-- Start -->
-                            <tr *ngFor="let simulation of simulations">
+                            <tr *ngFor="let simulation of simulations | paginate: {
+                                itemsPerPage: tableSize,
+                                currentPage: page,
+                                totalItems: count
+                              };
+                                let i = index ">
                                 <th class="p-3"><a href="#" class="text-primary">#{{simulation.id_simulation}}</a></th>
                                 <td class="p-3">
                                     <a href="#" class="text-primary">
@@ -49,8 +68,9 @@
                                     </div>
                                 </td> -->
                                 <td class="text-end p-3">
-                                    <a routerLink="{{simulation.id_simulation}}" class="btn btn-sm btn-primary">Modifier</a>
-                                    <a href="#" class="btn btn-sm btn-soft-danger ms-2">Supprimer</a>
+                                    <a routerLink="{{simulation.id_simulation}}"
+                                        class="btn btn-sm btn-primary">Modifier</a>
+                                        <button type="button" (click)="supprimer(simulation.id_simulation)" class="btn btn-sm btn-soft-danger ms-2">Supprimer</button>
                                 </td>
                             </tr>
                             <!-- End -->
@@ -62,7 +82,15 @@
                 </div>
             </div><!--end col-->
         </div><!--end row-->
-
+        <div class="spacer"></div>
+        <div class="d-flex justify-content-end">
+            <pagination-controls
+              previousLabel="Préc"
+              nextLabel="Suiv"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
         <div class="row text-center">
             <!-- PAGINATION START -->
             <!-- <div class="col-12 mt-4">

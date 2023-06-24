@@ -17,7 +17,7 @@ export class LoginComponent {
       .subscribe(result => { 
         console.log(result);
         if (result)
-          this.router.navigate(['/']);
+          this.router.navigate(['/sm-admin']);
         else  
           this.invalidLogin = true; 
       });

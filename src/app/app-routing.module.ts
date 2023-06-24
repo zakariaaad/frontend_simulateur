@@ -10,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { EditcltComponent } from './editclt/editclt.component';
 import { EditsimComponent } from './editsim/editsim.component';
 import { NoPermissionComponent } from './no-permission/no-permission.component';
-
+import { SmAdminComponent } from './sm-admin/sm-admin.component';
+import { AuthguardService, canActivatePage } from './service/authguard.service';
 const routes: Routes = [
 {
   path: '',
@@ -19,6 +20,12 @@ const routes: Routes = [
 {
   path: 'validation',
   component: SubmissionComponent
+},
+{
+  path: 'sm-admin',
+  component: SmAdminComponent,
+  canActivate: [canActivatePage],
+
 },
 {
   path: 'apropos',
@@ -34,23 +41,33 @@ const routes: Routes = [
 },
 {
   path: 'creation-simulation',
-  component: FormclientComponent
+  component: FormclientComponent,
+  canActivate: [canActivatePage],
+
 },
 {
   path: 'clients/:id_client',
-  component: EditcltComponent
+  component: EditcltComponent,
+  canActivate: [canActivatePage],
+
 },
 {
   path: 'clients',
-  component: ListcltsComponent
+  component: ListcltsComponent,
+  canActivate: [canActivatePage],
+
 },
 {
   path: 'simulations/:id_simulation',
-  component: EditsimComponent
+  component: EditsimComponent,
+  canActivate: [canActivatePage],
+
 },
 {
   path: 'simulations',
-  component: ListsimulationsComponent
+  component: ListsimulationsComponent,
+  canActivate: [canActivatePage],
+
 },
 ];
 

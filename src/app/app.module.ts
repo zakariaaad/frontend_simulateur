@@ -23,6 +23,8 @@ import { EditcltComponent } from './editclt/editclt.component';
 import { EditsimComponent } from './editsim/editsim.component';
 import { DetailcltComponent } from './detailclt/detailclt.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SmAdminComponent } from './sm-admin/sm-admin.component';
+import { AuthguardService } from './service/authguard.service';
 // import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
@@ -41,7 +43,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DetailsimComponent,
     EditcltComponent,
     EditsimComponent,
-    DetailcltComponent
+    DetailcltComponent,
+    SmAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
   providers: [
     CrudserviceService,
     ConfigapiService,
-    Authservice
+    Authservice,
+    AuthguardService
   ],
   bootstrap: [AppComponent,
     HeaderComponent,

@@ -1,0 +1,36 @@
+ .bgp {
+    margin: 0;
+    padding: 0;
+    background-color: #3e6bb4;
+  }
+  
+  .imgcs{
+    display: block;
+    margin: 0 auto;
+  }
+  #text {
+    font-size: 4rem;
+    text-align: center;
+    color: white;
+    font-family: "Quicksand", sans-serif;
+  }
+  #textpara {
+    font-size: 19px;
+    text-align: center;
+    font-family: "Quicksand", sans-serif;
+    color: #a7a2a2;
+  }
+  #credit {
+    font-size: 19px;
+    font-family: "Quicksand", sans-serif;
+    /* width: 100%; */
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    color: #a7a2a2;
+  }
+
+  a{
+    color: white;
+    font-weight: bold;
+  } 

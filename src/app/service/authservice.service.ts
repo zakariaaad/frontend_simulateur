@@ -16,6 +16,7 @@ const httplink = {
   providedIn: 'root',
 })
 export class Authservice {
+  user!: Observable<any>;
   constructor(private http: HttpClient,
     private router : Router) {}
 
@@ -26,7 +27,10 @@ export class Authservice {
       // let result = response.json();
       if (response && response.token) {
         localStorage.setItem('token', response.token);
-        // localStorage.setItem('email', response.email);
+        localStorage.setItem('email', response.email);
+        console.log("user",response.email)
+
+        this.user = response.token;
         return true;
       }
       return false;

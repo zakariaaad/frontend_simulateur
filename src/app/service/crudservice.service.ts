@@ -76,4 +76,8 @@ export class CrudserviceService {
   public deleteclt(id:string): Observable<any>{
     return this.httpClient.delete(`${httplink.getClientById}/${id}`);
   }
+
+  public deleteSim(id:string): Observable<any>{
+    return this.apiConfig.get(`${httplink.getSimById}/${id}`)
+  }
 }
