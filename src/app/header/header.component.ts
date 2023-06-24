@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthserviceService } from '../service/authservice.service';
+import { Authservice } from '../service/authservice.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,7 +7,7 @@ import { AuthserviceService } from '../service/authservice.service';
 })
 export class HeaderComponent {
 
-  constructor(public authlogin :AuthserviceService){}
+  constructor(public authlogin :Authservice){}
 
   Connexion(){
     this.authlogin.isLoggedIn()

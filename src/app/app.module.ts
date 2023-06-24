@@ -22,6 +22,7 @@ import { DetailsimComponent } from './detailsim/detailsim.component';
 import { EditcltComponent } from './editclt/editclt.component';
 import { EditsimComponent } from './editsim/editsim.component';
 import { DetailcltComponent } from './detailclt/detailclt.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 // import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
@@ -49,6 +50,7 @@ import { DetailcltComponent } from './detailclt/detailclt.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule
     // DataTablesModule
   ],
   providers: [

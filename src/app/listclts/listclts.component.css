@@ -36,6 +36,9 @@
 .spacerhead{
   margin-top: 4rem;
 }
+.spacer{
+margin-top: 12px;
+}
 
 @media (min-width: 1400px) {
   .container {

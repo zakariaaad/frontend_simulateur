@@ -15,7 +15,10 @@ export class ListcltsComponent implements OnInit {
 
   clients: any = [];
   currentDate: any = new Date();
-
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [3, 6, 9, 12];
   constructor(private router: Router,
             private httpcrud: CrudserviceService,
             private datePipe: DatePipe){
@@ -28,7 +31,7 @@ export class ListcltsComponent implements OnInit {
     // this.currentDate.toLocaleDateString();
     // let page = this.route.snapshot.queryParamMap.get('page');
     this.getListClients();
-console.log('ttt',this.currentDate);
+// console.log('ttt',this.currentDate);
     
   }
 
@@ -43,6 +46,17 @@ async getListClients ()
         // }
       // }
     });
+}
+onTableDataChange(event: any) {
+  this.page = event;
+  this.getListClients();
+}
+
+onTableSizeChange(event: any): void {
+  this.tableSize = event.target.value;
+  this.page = 1;
+  this.getListClients();
+
 }
 
 supprimer(id_client: any)
