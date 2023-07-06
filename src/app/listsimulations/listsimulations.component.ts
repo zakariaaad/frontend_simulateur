@@ -36,6 +36,7 @@ async getAllSimulationslist ()
 {
     this.httpcrud.getAllSimulation().subscribe((data : any) => {
         const resultData = data;
+        console.log("resultData");
         console.log(resultData);
         // if (resultData) {
           this.simulations = resultData;
