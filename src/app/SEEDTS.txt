@@ -60,3 +60,35 @@
     //     return false;}
     //   });
     // }
+
+    <!-- <nav class="navbar navbar-expand-lg bg-sim" data-bs-theme="dark" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MySimulateur de crédit</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-md-center" id="navbarColor02">
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <a class="nav-link " routerLinkActive="active" routerLink="/">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/apropos" >A propos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Gestion Simulations</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item"  routerLink="/apropos">Création simulation</a></li>
+              <li><a class="dropdown-item"  routerLink="/simulations">Liste des simulations</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="#">Gestion Clients</a>
+          </li>
+
+
+        </ul>
+
+      </div>
+    </div>
+  </nav> -->
