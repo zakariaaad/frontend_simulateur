@@ -25,6 +25,8 @@ import { DetailcltComponent } from './detailclt/detailclt.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SmAdminComponent } from './sm-admin/sm-admin.component';
 import { AuthguardService } from './service/authguard.service';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 // import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
@@ -53,6 +55,7 @@ import { AuthguardService } from './service/authguard.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    HighchartsChartModule,
     NgxPaginationModule
     // DataTablesModule
   ],
