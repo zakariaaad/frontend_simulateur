@@ -20,7 +20,6 @@ export class SmAdminComponent implements OnInit{
   ngOnInit(){
     this.getAllSimulationslist();
 
-   
   }
   chartOptions: Highcharts.Options = {
     title: {

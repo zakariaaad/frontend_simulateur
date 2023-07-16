@@ -17,6 +17,7 @@ export class DetailsimComponent implements OnInit{
 
   async ngOnInit(){
     this.id_simulation = await this.route.snapshot.params['id_simulation'];
+    console.log(this.id_simulation);
     await this.getDetailSimById();
 
   }

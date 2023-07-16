@@ -1,1 +1,127 @@
-<p>detailsim works!</p>
+<div class="spacerhead"></div>
+
+<div class="container-fluid">
+    <div class="layout-specing">
+        <div class="d-md-flex justify-content-between align-items-center d-print-none">
+            <h5 class="mb-0">Gestion simulations</h5>
+
+            <nav aria-label="breadcrumb" class="d-inline-block mt-2 mt-sm-0">
+                <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
+                    <li class="breadcrumb-item text-capitalize"><a href="">Simulations</a></li>
+                    <li class="breadcrumb-item text-capitalize active" aria-current="page">Détail</li>
+                </ul>
+            </nav>
+        </div>
+    
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card shadow rounded border-0">
+                    <div class="card-body">
+                        <div class="invoice-top pb-4 border-bottom">
+                            <div class="row">
+                                <div class="col-xl-9 col-md-8">
+                                    <div class="logo-invoice mb-2"><img src="../assets/credit.png" height="50" alt=""></div>
+                                  
+                                    <a href="javascript:window.print()" class="btn btn-icon btn-soft-primary d-print-none"><i class="ti ti-printer"></i></a> (PDF)
+
+                                </div><!--end col-->
+
+
+                                <div class="col-xl-3 col-md-4 mt-4 mt-sm-0">
+                                    <h5>Simulation de crédit</h5>
+                                    <dl class="row mb-0">
+
+                                        <dt class="col-2 text-muted"><i class="uil uil-map"></i></dt>
+                                        <dd class="col-10 text-muted">
+                                                <p class="mb-0">Date: {{simulation.date_simulation | date: 'yyyy-MM-dd'}}</p>
+                                                <!-- <p class="mb-0">Lieu: Kenitra</p> -->
+                                          
+                                        </dd>
+
+                                        <dt class="col-2 text-muted"><i class="uil uil-envelope"></i></dt>
+                                        <dd class="col-10 text-muted">
+                                            <a href="mailto:contact@example.com" class="text-muted">test@gmail.com</a>
+                                        </dd>
+                                    </dl>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                        </div>
+
+                        <div class="invoice-middle py-4">
+                            <h5>Details Simulations :</h5>
+                            <div class="row mb-0">
+                                <div class="col-xl-6 col-md-4 order-md-2 order-1 mt-2 mt-sm-0">
+                                    <dl class="row mb-0">
+                                        <dt class="col-md-3 col-5 fw-normal">No. Simulation:</dt>
+                                        <dd class="col-md-9 col-7 text-muted">#{{simulation.id_simulation}}</dd>
+                                        
+                                        <dt class="col-md-3 col-5 fw-normal">Nom Client :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.nom_prenom_client}}</dd>
+                                        
+                                        <dt class="col-md-3 col-5 fw-normal">Type produit :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.type_produit_simulation}}</dd>
+                                        
+                                        <dt class="col-md-3 col-5 fw-normal">Montant :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.prix_produit_simulation.toLocaleString('en-US').replace(',', ' ')}}
+                                        </dd>
+                                        
+                                        <dt class="col-md-3 col-5 fw-normal">Durée :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.duree_simulation}} Mois</dd>
+
+                                        <dt class="col-md-3 col-5 fw-normal">Montant d'avance :</dt>
+                                        <dd class="col-md-9 col-7 text-success">{{simulation.avance_credit_simulation.toLocaleString('en-US').replace(',', ' ')}} DH</dd>
+
+                                        <dt class="col-md-3 col-5 fw-normal">Echéance mensuelle :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.echeance_mensuelle_simulation}} DH</dd>
+
+                                        <dt class="col-md-3 col-5 fw-normal">Type Assurances :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.caracteristiques_simulation}}</dd>
+                                    </dl>
+                                </div>
+
+                                <div class="col-xl-6 col-md-4 order-md-2 order-1 mt-2 mt-sm-0">
+                                    <dl class="row mb-0">
+                                        <dt class="col-md-3 col-5 fw-normal">Type taux d'intérêt :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.type_taux_simulation}}</dd>
+                                        
+                                        <dt class="col-md-3 col-5 fw-normal">Taux :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.tauxinteret_simulation}} %</dd>
+                                        
+                                        <dt class="col-md-3 col-5 fw-normal">Fréquence :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.frequence_simulation}} Mois</dd>
+
+                                        <dt class="col-md-3 col-5 fw-normal">Montant remise :</dt>
+                                        <dd class="col-md-9 col-7 text-info">{{simulation.montant_remise_simulation.toLocaleString('en-US').replace(',', ' ')}} DH</dd>
+
+                                        <dt class="col-md-3 col-5 fw-normal">Assurance Dèces :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.assurance_deces_simulation}}</dd>
+
+                                        <dt class="col-md-3 col-5 fw-normal">Frais de dossier :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.frais_dossier_simulation.toLocaleString('en-US').replace(',', ' ')}} DH</dd>
+
+                                        <dt class="col-md-3 col-5 fw-normal">Prime Décès :</dt>
+                                        <dd class="col-md-9 col-7 text-muted">{{simulation.assurances_simulation}}</dd>
+
+                                        <dt class="col-md-3 col-5 fw-normal">Mensualité crédit :</dt>
+                                        <dd class="col-md-9 col-7 text-bold text-success">{{simulation.mensualite_simulation.toLocaleString('en-US').replace(',', ' ')}} DH</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-footer border-top pt-4">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="text-sm-start text-muted text-center">
+                                        <h6 class="mb-0">Téléphone : <span class="text-warning">06666666</span></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!--end col-->
+        </div><!--end row-->
+    </div>
+</div><!--end container-->
+<div class="spacer"></div>

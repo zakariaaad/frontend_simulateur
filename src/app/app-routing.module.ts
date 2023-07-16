@@ -11,6 +11,7 @@ import { EditcltComponent } from './editclt/editclt.component';
 import { EditsimComponent } from './editsim/editsim.component';
 import { NoPermissionComponent } from './no-permission/no-permission.component';
 import { SmAdminComponent } from './sm-admin/sm-admin.component';
+import { DetailsimComponent } from './detailsim/detailsim.component';
 import { AuthguardService, canActivatePage } from './service/authguard.service';
 const routes: Routes = [
 {
@@ -45,6 +46,7 @@ const routes: Routes = [
   canActivate: [canActivatePage],
 
 },
+
 {
   path: 'clients/:id_client',
   component: EditcltComponent,
@@ -60,6 +62,12 @@ const routes: Routes = [
 {
   path: 'simulations/:id_simulation',
   component: EditsimComponent,
+  canActivate: [canActivatePage],
+
+},
+{
+  path: 'detailsimulation/:id_simulation',
+  component: DetailsimComponent,
   canActivate: [canActivatePage],
 
 },
