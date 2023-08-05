@@ -141,6 +141,7 @@ h5.card-title {
 }
 
 .center{
+  display: block;
 text-align: center;
 }
 

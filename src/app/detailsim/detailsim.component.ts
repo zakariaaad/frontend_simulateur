@@ -38,4 +38,10 @@ export class DetailsimComponent implements OnInit{
     
   }
 
+  //Separateur de milier
+  addSpaceSeparators(number:any) {
+    if (number !== undefined && number !== null) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+} 
 }

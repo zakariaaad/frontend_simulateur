@@ -30,7 +30,7 @@
                             <div class="flex-1 ms-3">
                                 <h6 class="mb-0 text-muted">Total Clients</h6>
                                 <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value"
-                                        data-target="4589">2100</span></p>
+                                        data-target="4589">100</span></p>
                             </div>
                         </div>
 
@@ -45,9 +45,9 @@
                                 <i class="uil uil-usd-circle fs-4 mb-0"></i>
                             </div>
                             <div class="flex-1 ms-3">
-                                <h6 class="mb-0 text-muted">Total Simulations</h6>
-                                <p class="fs-5 text-dark fw-bold mb-0">$<span class="counter-value"
-                                        data-target="48575">35214</span></p>
+                                <h6 class="mb-0 text-muted">Total crédits</h6>
+                                <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value"
+                                        data-target="48575">35 214</span>DH</p>
                             </div>
                         </div>
 
@@ -62,9 +62,9 @@
                                 <i class="uil uil-shopping-bag fs-4 mb-0"></i>
                             </div>
                             <div class="flex-1 ms-3">
-                                <h6 class="mb-0 text-muted">Total Crédits</h6>
+                                <h6 class="mb-0 text-muted">Total Simulations</h6>
                                 <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value"
-                                        data-target="4800">3402</span></p>
+                                        data-target="4800">50</span></p>
                             </div>
                         </div>
 
@@ -99,7 +99,7 @@
                             <div class="flex-1 ms-3">
                                 <h6 class="mb-0 text-muted">Utilisateurs</h6>
                                 <p class="fs-5 text-dark fw-bold mb-0"><span class="counter-value"
-                                        data-target="9">1.5</span>M</p>
+                                        data-target="9">20</span></p>
                             </div>
                         </div>
                     </a>
@@ -209,12 +209,10 @@
                                 <tr *ngFor="let simulation of simulations.slice(0,5);">
                                     <th class="p-3">#{{simulation.id_simulation}}</th>
                                     <td class="p-3">
-                                        <a href="#" class="text-primary">
                                             <div class="d-flex align-items-center">
-
                                                 <span class="ms-2">{{simulation.nom_prenom_client}}</span>
                                             </div>
-                                        </a>
+                                        
                                     </td>
                                     <td class="text-center p-3">{{simulation.prix_produit_simulation}} DH</td>
                                     <td class="text-center p-3">{{simulation.type_produit_simulation}}</td>
@@ -224,7 +222,7 @@
                                         </div>
                                     </td>
                                     <td class="text-end p-3">
-                                        <a href="" class="btn btn-sm btn-primary">Détail</a>
+                                        <a routerLink="/detailsimulation/{{simulation.id_simulation}}" class="btn btn-sm btn-primary">Détail</a>
                                     </td>
                                 </tr>
                                 <!-- End -->

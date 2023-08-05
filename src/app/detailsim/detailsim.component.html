@@ -62,14 +62,14 @@
                                         <dd class="col-md-9 col-7 text-muted">{{simulation.type_produit_simulation}}</dd>
                                         
                                         <dt class="col-md-3 col-5 fw-normal">Montant :</dt>
-                                        <dd class="col-md-9 col-7 text-muted">{{simulation.prix_produit_simulation.toLocaleString('en-US').replace(',', ' ')}}
+                                        <dd class="col-md-9 col-7 text-muted bolding">{{addSpaceSeparators(simulation.prix_produit_simulation)}}
                                         </dd>
                                         
                                         <dt class="col-md-3 col-5 fw-normal">Durée :</dt>
                                         <dd class="col-md-9 col-7 text-muted">{{simulation.duree_simulation}} Mois</dd>
 
                                         <dt class="col-md-3 col-5 fw-normal">Montant d'avance :</dt>
-                                        <dd class="col-md-9 col-7 text-success">{{simulation.avance_credit_simulation.toLocaleString('en-US').replace(',', ' ')}} DH</dd>
+                                        <dd class="col-md-9 col-7 text-success bolding">{{addSpaceSeparators(simulation.avance_credit_simulation)}} DH</dd>
 
                                         <dt class="col-md-3 col-5 fw-normal">Echéance mensuelle :</dt>
                                         <dd class="col-md-9 col-7 text-muted">{{simulation.echeance_mensuelle_simulation}} DH</dd>
@@ -91,19 +91,19 @@
                                         <dd class="col-md-9 col-7 text-muted">{{simulation.frequence_simulation}} Mois</dd>
 
                                         <dt class="col-md-3 col-5 fw-normal">Montant remise :</dt>
-                                        <dd class="col-md-9 col-7 text-info">{{simulation.montant_remise_simulation.toLocaleString('en-US').replace(',', ' ')}} DH</dd>
+                                        <dd class="col-md-9 col-7 text-info bolding" >{{addSpaceSeparators(simulation.montant_remise_simulation)}} DH</dd>
 
                                         <dt class="col-md-3 col-5 fw-normal">Assurance Dèces :</dt>
                                         <dd class="col-md-9 col-7 text-muted">{{simulation.assurance_deces_simulation}}</dd>
 
                                         <dt class="col-md-3 col-5 fw-normal">Frais de dossier :</dt>
-                                        <dd class="col-md-9 col-7 text-muted">{{simulation.frais_dossier_simulation.toLocaleString('en-US').replace(',', ' ')}} DH</dd>
+                                        <dd class="col-md-9 col-7 text-muted bolding" >{{addSpaceSeparators(simulation.frais_dossier_simulation)}} DH</dd>
 
                                         <dt class="col-md-3 col-5 fw-normal">Prime Décès :</dt>
                                         <dd class="col-md-9 col-7 text-muted">{{simulation.assurances_simulation}}</dd>
 
                                         <dt class="col-md-3 col-5 fw-normal">Mensualité crédit :</dt>
-                                        <dd class="col-md-9 col-7 text-bold text-success">{{simulation.mensualite_simulation.toLocaleString('en-US').replace(',', ' ')}} DH</dd>
+                                        <dd class="col-md-9 col-7 text-bold text-success bolding" >{{addSpaceSeparators(simulation.mensualite_simulation)}} DH</dd>
                                     </dl>
                                 </div>
                             </div>
