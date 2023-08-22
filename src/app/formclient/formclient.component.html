@@ -1,6 +1,32 @@
 <div class="wrapper">
+
   <h1 class="heading center">Simulateur de crédit</h1>
   <span class="text-center center">Formulaire création simulation</span>
+  <div id="stepper1" class="bs-stepper">
+    <div class="bs-stepper-header">
+      <div class="step" data-target="#test-l-1">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">1</span>
+          <span class="bs-stepper-label">Client</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-2">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">2</span>
+          <span class="bs-stepper-label">Produit</span>
+        </button>
+      </div>
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-3">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">3</span>
+          <span class="bs-stepper-label">Resultat</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <form (ngSubmit)="submit()" method="post" [formGroup]="multistep">
     <div class="container">
       <!-- <div class="alert alert-danger" *ngIf="multistep.errors"> -->

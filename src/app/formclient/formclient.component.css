@@ -316,3 +316,20 @@ table{
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
+.bs-stepper-header{
+  width: 60% !important;
+  margin: 0 auto;
+}
+
+.bs-stepper-circle{
+  background-color: #c3d0dc !important;
+  color: #655dbb !important;
+
+}
+.bs-stepper-label{
+  color: #655dbb !important;
+}
+.step-trigger{
+  pointer-events: none!important;
+}

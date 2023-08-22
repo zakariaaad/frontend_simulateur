@@ -10,6 +10,7 @@ import { CrudserviceService } from '../service/crudservice.service';
 import { pmt } from 'financial'
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import Stepper from 'bs-stepper';
 
 
 @Component({
@@ -18,7 +19,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./formclient.component.css'],
 })
 export class FormclientComponent implements OnInit {
-
+  private stepper!: Stepper;
   id_client: any;
   mensualitee!: number;
   fraisdossier!: number;
@@ -69,7 +70,12 @@ export class FormclientComponent implements OnInit {
   });
   @ViewChild('resultat') resultat!: ElementRef;
   constructor(private router: Router, private httpcrud: CrudserviceService) {}
-  ngOnInit(): void { }
+  ngOnInit() { 
+    this.stepper = new Stepper(document.querySelector('#stepper1')!, {
+      linear: false,
+      animation: true
+    })
+  }
 
   async submit() {
 
