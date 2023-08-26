@@ -21,6 +21,7 @@ const httplink = {
   getAllSimulation: apiUrl + 'api/v1/simulations/',
   getClientById: apiUrl + 'api/v1/clients',
   getSimById: apiUrl + 'api/v1/simulations',
+  getVilles: apiUrl + 'api/user/villes',
 }
 
 @Injectable({
@@ -46,6 +47,11 @@ export class CrudserviceService {
 
     return this.apiConfig.get(httplink.getAllClients)
   }
+
+    //Get list clients
+    public getAllVilles(): Observable<any> {
+      return this.apiConfig.get(httplink.getVilles)
+    }
 
   //Get list simulations
   public getAllSimulation(): Observable<any> {

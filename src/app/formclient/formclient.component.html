@@ -98,9 +98,7 @@
             <span class="text-danger"> *</span>
             <select class="form-select" formControlName="ville_client" aria-label="Ville" id="ville_client">
               <option value="" selected>Choisire...</option>
-              <option value="Kenitra">Kenitra</option>
-              <option value="Rabat">Rabat</option>
-              <option value="Casablanca">Casablanca</option>
+              <option *ngFor="let v of villes" [value]="v.cities_id">{{v.cities_name}}</option>
             </select>
           </div>
         </div>

@@ -11,6 +11,7 @@ import { pmt } from 'financial'
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import Stepper from 'bs-stepper';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -20,6 +21,7 @@ import Stepper from 'bs-stepper';
 })
 export class FormclientComponent implements OnInit {
   private stepper!: Stepper;
+  villes: any;
   id_client: any;
   mensualitee!: number;
   fraisdossier!: number;
@@ -71,10 +73,19 @@ export class FormclientComponent implements OnInit {
   @ViewChild('resultat') resultat!: ElementRef;
   constructor(private router: Router, private httpcrud: CrudserviceService) {}
   ngOnInit() { 
-    this.stepper = new Stepper(document.querySelector('#stepper1')!, {
-      linear: false,
-      animation: true
-    })
+    // this.stepper = new Stepper(document.querySelector('#stepper1')!, {
+    //   linear: false,
+    //   animation: true
+    // })
+    //Chargement des villes
+    this.getVilles();
+  }
+
+  async getVilles(){
+    this.httpcrud.getAllVilles().subscribe((data : any) => {
+      this.villes = Array.from(data.data);
+      console.log("Villes",this.villes);
+  });
   }
 
   async submit() {
